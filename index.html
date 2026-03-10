@@ -345,9 +345,9 @@ footer {
         </div>
         <div class="lang-row">
           <div class="lang-item"><span class="lang-name">Arabisch</span><div class="lang-bar"><div class="lang-fill" data-w="100%"></div></div></div>
-          <div class="lang-item"><span class="lang-name">Deutsch</span><div class="lang-bar"><div class="lang-fill" data-w="82%"></div></div></div>
-          <div class="lang-item"><span class="lang-name">Englisch</span><div class="lang-bar"><div class="lang-fill" data-w="82%"></div></div></div>
-          <div class="lang-item"><span class="lang-name">Französisch</span><div class="lang-bar"><div class="lang-fill" data-w="68%"></div></div></div>
+          <div class="lang-item"><span class="lang-name">Deutsch</span><div class="lang-bar"><div class="lang-fill" data-w="85%"></div></div></div>
+          <div class="lang-item"><span class="lang-name">Englisch</span><div class="lang-bar"><div class="lang-fill" data-w="90%"></div></div></div>
+          <div class="lang-item"><span class="lang-name">Französisch</span><div class="lang-bar"><div class="lang-fill" data-w="80%"></div></div></div>
         </div>
       </div>
     </div>
@@ -536,9 +536,15 @@ footer {
   window.addEventListener('scroll', check, { passive: true });
   window.addEventListener('resize', check, { passive: true });
 
-  // Language bars
+  // Language bars — triggered on load with delay so CSS transition plays
   var bars = document.querySelectorAll('.lang-fill');
-  var triggered = false;
-  function triggerBars() {
-    if (triggered) return;
-    var langRow = document.que
+  setTimeout(function() {
+    bars.forEach(function(b) {
+      b.style.width = b.getAttribute('data-w');
+    });
+  }, 400);
+})();
+</script>
+
+</body>
+</html>
