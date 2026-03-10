@@ -3,17 +3,17 @@
 <head>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>WAHB Mohamed Amine</title>
+<title>WAHB Mohamed Amine — Pflegefachmann</title>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400;1,500;1,600&family=Lato:wght@300;400;700&display=swap" rel="stylesheet"/>
 <style>
 :root {
   --navy:   #1A3560;
   --blue:   #2E5FA3;
   --sky:    #4A7FC1;
+  --teal:   #1A7A6E;
   --ink:    #1C2E4A;
   --slate:  #4E6880;
   --muted:  #93A8C0;
-  --subtle: #B5C5D8;
   --border: #DDE4EE;
   --bg:     #ECF0F6;
   --card:   #FAFBFD;
@@ -36,7 +36,7 @@ body {
 /* NAV */
 nav {
   position: fixed; top: 0; left: 0; right: 0; z-index: 999;
-  background: rgba(250,251,253,0.92);
+  background: rgba(250,251,253,0.93);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
   border-bottom: 1px solid var(--border);
@@ -50,14 +50,14 @@ nav {
   font-size: 16px; font-style: italic; font-weight: 600;
   color: var(--ink); text-decoration: none;
 }
-.nav-links { display: flex; gap: 28px; list-style: none; }
+.nav-links { display: flex; gap: 22px; list-style: none; }
 .nav-links a {
   font-size: 11px; font-weight: 400; letter-spacing: 0.1em;
   text-transform: uppercase; color: var(--slate);
   text-decoration: none; transition: color .2s;
 }
 .nav-links a:hover { color: var(--blue); }
-@media (max-width: 640px) { .nav-links { display: none; } }
+@media (max-width: 700px) { .nav-links { display: none; } }
 
 /* HERO */
 .hero {
@@ -65,7 +65,6 @@ nav {
   padding: 80px 32px 60px;
   display: flex; align-items: center;
   position: relative; overflow: hidden;
-  background: var(--bg);
 }
 .hero-bg {
   position: absolute; inset: 0; z-index: 0; pointer-events: none;
@@ -77,15 +76,14 @@ nav {
   position: relative; z-index: 1;
   max-width: 1080px; margin: 0 auto; width: 100%;
   display: grid; grid-template-columns: 1fr 1fr;
-  gap: 64px; align-items: center;
+  gap: 56px; align-items: center;
 }
 @media (max-width: 820px) {
-  .hero-inner { grid-template-columns: 1fr; gap: 40px; }
-  .hero { padding: 80px 24px 48px; }
+  .hero-inner { grid-template-columns: 1fr; gap: 36px; }
+  .hero { padding: 80px 20px 48px; }
 }
 .pulse-dot {
-  display: inline-block;
-  width: 7px; height: 7px; border-radius: 50%;
+  display: inline-block; width: 7px; height: 7px; border-radius: 50%;
   background: var(--sky); flex-shrink: 0;
   animation: pulse 3s ease-in-out infinite;
 }
@@ -100,61 +98,49 @@ nav {
 }
 .hero-name {
   font-family: 'Playfair Display', Georgia, serif;
-  font-size: clamp(36px, 5vw, 56px);
+  font-size: clamp(36px, 5vw, 54px);
   line-height: 1.15; font-weight: 600;
   color: var(--ink); margin-bottom: 10px;
 }
 .hero-name em { color: var(--blue); font-style: italic; font-weight: 400; }
 .hero-role {
   font-family: 'Playfair Display', Georgia, serif;
-  font-size: 17px; font-style: italic; font-weight: 400;
-  color: var(--slate); margin-bottom: 22px;
+  font-size: 17px; font-style: italic; color: var(--slate); margin-bottom: 22px;
 }
 .hero-desc {
-  font-size: 14px; line-height: 1.9; color: var(--slate);
+  font-size: 14px; line-height: 1.95; color: var(--slate);
   font-weight: 300; max-width: 420px; margin-bottom: 32px;
 }
 .hero-actions { display: flex; gap: 12px; flex-wrap: wrap; }
 .btn {
   display: inline-block; padding: 11px 24px; border-radius: 9px;
   font-size: 12px; font-weight: 700; letter-spacing: 0.06em;
-  text-decoration: none; transition: all .22s ease; cursor: pointer;
+  text-decoration: none; transition: all .22s; cursor: pointer;
 }
-.btn-primary {
-  background: var(--navy); color: #EFF4FA;
-  box-shadow: 0 4px 16px rgba(26,53,96,0.22);
-}
+.btn-primary { background: var(--navy); color: #EFF4FA; box-shadow: 0 4px 16px rgba(26,53,96,0.22); }
 .btn-primary:hover { background: var(--blue); transform: translateY(-1px); box-shadow: 0 8px 24px rgba(26,53,96,0.28); }
-.btn-ghost {
-  background: transparent; color: var(--navy);
-  border: 1.5px solid var(--border);
-}
+.btn-ghost { background: transparent; color: var(--navy); border: 1.5px solid var(--border); }
 .btn-ghost:hover { border-color: var(--blue); color: var(--blue); background: rgba(46,95,163,0.05); }
 
 /* STATS CARD */
 .stats-card {
   background: var(--card); border: 1px solid var(--border);
-  border-radius: 18px; padding: 32px;
+  border-radius: 18px; padding: 28px;
   box-shadow: 0 4px 12px rgba(30,50,90,0.06), 0 20px 48px rgba(30,50,90,0.08);
 }
 .stats-card-header {
   font-family: 'Playfair Display', Georgia, serif;
-  font-size: 14px; font-style: italic; font-weight: 500;
-  color: var(--slate); margin-bottom: 24px;
-  padding-bottom: 14px; border-bottom: 1px solid var(--border);
+  font-size: 13px; font-style: italic; color: var(--slate);
+  margin-bottom: 20px; padding-bottom: 14px; border-bottom: 1px solid var(--border);
 }
-.stats-grid {
-  display: grid; grid-template-columns: 1fr 1fr; gap: 18px; margin-bottom: 24px;
-}
-.stat-num {
-  font-family: 'Playfair Display', Georgia, serif;
-  font-size: 30px; font-weight: 600; color: var(--ink); line-height: 1;
-}
-.stat-num span { font-size: 16px; color: var(--sky); }
+.stats-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 22px; }
+.stat-num { font-family: 'Playfair Display', Georgia, serif; font-size: 28px; font-weight: 600; color: var(--ink); line-height: 1; }
+.stat-num span { font-size: 15px; color: var(--sky); }
 .stat-label { font-size: 11px; color: var(--muted); margin-top: 3px; }
 .lang-row { display: flex; flex-direction: column; gap: 10px; }
 .lang-item { display: flex; align-items: center; gap: 10px; }
-.lang-name { font-size: 11.5px; color: var(--slate); width: 72px; flex-shrink: 0; }
+.lang-name { font-size: 11.5px; color: var(--slate); width: 76px; flex-shrink: 0; }
+.lang-level { font-size: 10px; color: var(--muted); width: 28px; flex-shrink: 0; }
 .lang-bar { flex: 1; height: 4px; background: var(--border); border-radius: 2px; overflow: hidden; }
 .lang-fill {
   height: 100%; border-radius: 2px;
@@ -163,143 +149,120 @@ nav {
 }
 
 /* SECTIONS */
-section { padding: 80px 32px; }
-@media (max-width: 640px) { section { padding: 56px 20px; } }
+section { padding: 76px 32px; }
+@media (max-width: 640px) { section { padding: 52px 20px; } }
 .section-inner { max-width: 1080px; margin: 0 auto; }
 .section-label {
   font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase;
   color: var(--muted); font-weight: 400; margin-bottom: 8px;
   display: flex; align-items: center; gap: 12px;
 }
-.section-label::after {
-  content: ''; flex: 1; height: 1px;
-  background: linear-gradient(90deg, var(--border), transparent);
-}
+.section-label::after { content: ''; flex: 1; height: 1px; background: linear-gradient(90deg, var(--border), transparent); }
 .section-title {
   font-family: 'Playfair Display', Georgia, serif;
-  font-size: clamp(24px, 3vw, 34px); font-weight: 500;
-  color: var(--ink); margin-bottom: 44px; line-height: 1.25;
+  font-size: clamp(22px, 3vw, 32px); font-weight: 500;
+  color: var(--ink); margin-bottom: 40px; line-height: 1.25;
 }
 .section-title em { color: var(--blue); font-style: italic; }
 
 /* ABOUT */
-.about-grid {
-  display: grid; grid-template-columns: 1fr 1fr; gap: 52px; align-items: start;
-}
-@media (max-width: 820px) { .about-grid { grid-template-columns: 1fr; gap: 32px; } }
+.about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 52px; align-items: start; }
+@media (max-width: 820px) { .about-grid { grid-template-columns: 1fr; gap: 28px; } }
 .about-text p { font-size: 14px; line-height: 2; color: var(--slate); font-weight: 300; margin-bottom: 14px; }
 .about-text strong { color: var(--ink); font-weight: 600; }
-.info-list { display: flex; flex-direction: column; gap: 10px; }
+.info-list { display: flex; flex-direction: column; gap: 9px; }
 .info-item {
   display: flex; align-items: flex-start; gap: 12px;
-  padding: 13px 16px; background: var(--panel);
+  padding: 12px 15px; background: var(--panel);
   border: 1px solid var(--border); border-radius: 10px;
 }
-.info-icon {
-  width: 30px; height: 30px; border-radius: 7px;
-  background: var(--navy); display: flex; align-items: center;
-  justify-content: center; flex-shrink: 0; font-size: 13px;
-}
+.info-icon { width: 30px; height: 30px; border-radius: 7px; background: var(--navy); display: flex; align-items: center; justify-content: center; flex-shrink: 0; font-size: 13px; }
 .info-label { font-size: 10px; text-transform: uppercase; letter-spacing: 0.1em; color: var(--muted); }
 .info-value { font-size: 13px; color: var(--ink); font-weight: 500; margin-top: 2px; }
 
 /* TIMELINE */
 .timeline { display: flex; flex-direction: column; }
-.timeline-item {
-  display: grid;
-  grid-template-columns: 120px 32px 1fr;
-  padding-bottom: 32px;
-}
+.timeline-item { display: grid; grid-template-columns: 130px 32px 1fr; padding-bottom: 28px; }
 .timeline-item:last-child { padding-bottom: 0; }
-.timeline-date {
-  font-size: 12px; color: var(--muted); font-weight: 400;
-  text-align: right; padding-right: 16px; padding-top: 17px; line-height: 1.5;
-}
-.timeline-axis {
-  display: flex; flex-direction: column; align-items: center; padding-top: 19px;
-}
-.t-dot {
-  width: 13px; height: 13px; border-radius: 50%; flex-shrink: 0;
-  background: var(--card); border: 2.5px solid var(--blue);
-  box-shadow: 0 0 0 3px rgba(46,95,163,0.12);
-}
-.t-line {
-  flex: 1; width: 1px; background: var(--border); margin-top: 5px;
-}
+.timeline-date { font-size: 11.5px; color: var(--muted); text-align: right; padding-right: 16px; padding-top: 17px; line-height: 1.5; }
+.timeline-axis { display: flex; flex-direction: column; align-items: center; padding-top: 19px; }
+.t-dot { width: 13px; height: 13px; border-radius: 50%; flex-shrink: 0; background: var(--card); border: 2.5px solid var(--blue); box-shadow: 0 0 0 3px rgba(46,95,163,0.12); }
+.t-line { flex: 1; width: 1px; background: var(--border); margin-top: 5px; }
 .timeline-item:last-child .t-line { display: none; }
-.timeline-body {
-  margin-left: 16px; padding: 16px 20px;
-  background: var(--card); border: 1px solid var(--border); border-radius: 12px;
-  transition: border-color .2s, box-shadow .2s;
-}
+.timeline-body { margin-left: 16px; padding: 15px 18px; background: var(--card); border: 1px solid var(--border); border-radius: 12px; transition: border-color .2s, box-shadow .2s; }
 .timeline-body:hover { border-color: var(--sky); box-shadow: 0 4px 18px rgba(30,50,90,0.08); }
-.t-title {
-  font-family: 'Playfair Display', Georgia, serif;
-  font-size: 15px; font-weight: 500; color: var(--ink); margin-bottom: 4px;
-}
-.t-sub { font-size: 12px; color: var(--blue); font-weight: 600; margin-bottom: 8px; }
-.t-desc { font-size: 13.5px; color: var(--slate); font-weight: 300; line-height: 1.8; }
+.t-title { font-family: 'Playfair Display', Georgia, serif; font-size: 14.5px; font-weight: 500; color: var(--ink); margin-bottom: 3px; }
+.t-sub { font-size: 12px; color: var(--blue); font-weight: 600; margin-bottom: 7px; }
+.t-desc { font-size: 13px; color: var(--slate); font-weight: 300; line-height: 1.85; }
+.t-tags { display: flex; flex-wrap: wrap; gap: 5px; margin-top: 9px; }
+.t-tag { font-size: 10.5px; color: var(--slate); background: var(--panel); border: 1px solid var(--border); border-radius: 999px; padding: 2px 9px; }
 @media (max-width: 640px) {
-  .timeline-item { grid-template-columns: 64px 28px 1fr; }
-  .timeline-date { font-size: 11px; padding-right: 10px; }
+  .timeline-item { grid-template-columns: 60px 26px 1fr; }
+  .timeline-date { font-size: 10px; padding-right: 8px; }
 }
 
 /* SKILLS */
-.skills-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 18px; }
+.skills-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 16px; }
 @media (max-width: 820px) { .skills-grid { grid-template-columns: 1fr 1fr; } }
 @media (max-width: 480px) { .skills-grid { grid-template-columns: 1fr; } }
-.skill-card {
-  background: var(--card); border: 1px solid var(--border);
-  border-radius: 14px; padding: 22px 20px;
-  transition: border-color .2s, transform .2s, box-shadow .2s;
-}
+.skill-card { background: var(--card); border: 1px solid var(--border); border-radius: 14px; padding: 20px 18px; transition: border-color .2s, transform .2s, box-shadow .2s; }
 .skill-card:hover { border-color: var(--sky); transform: translateY(-3px); box-shadow: 0 8px 28px rgba(30,50,90,0.10); }
-.skill-icon {
-  width: 36px; height: 36px; border-radius: 9px;
-  background: linear-gradient(135deg, var(--navy), var(--blue));
-  display: flex; align-items: center; justify-content: center;
-  font-size: 17px; margin-bottom: 12px;
+.skill-icon { width: 34px; height: 34px; border-radius: 8px; background: linear-gradient(135deg, var(--navy), var(--blue)); display: flex; align-items: center; justify-content: center; font-size: 16px; margin-bottom: 11px; }
+.skill-title { font-family: 'Playfair Display', Georgia, serif; font-size: 13.5px; font-weight: 500; font-style: italic; color: var(--ink); margin-bottom: 9px; }
+.tags { display: flex; flex-wrap: wrap; gap: 5px; }
+.tag { font-size: 11px; color: var(--slate); background: var(--panel); border: 1px solid var(--border); border-radius: 999px; padding: 2px 9px; }
+
+/* CERTS GRID */
+.certs-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 14px; }
+@media (max-width: 820px) { .certs-grid { grid-template-columns: 1fr 1fr; } }
+@media (max-width: 480px) { .certs-grid { grid-template-columns: 1fr; } }
+.cert-card {
+  background: var(--card); border: 1px solid var(--border); border-radius: 12px;
+  padding: 16px 16px 14px; display: flex; flex-direction: column; gap: 6px;
+  transition: border-color .2s, box-shadow .2s;
 }
-.skill-title {
-  font-family: 'Playfair Display', Georgia, serif;
-  font-size: 14px; font-weight: 500; font-style: italic;
-  color: var(--ink); margin-bottom: 10px;
+.cert-card:hover { border-color: var(--sky); box-shadow: 0 4px 16px rgba(30,50,90,0.08); }
+.cert-badge {
+  display: inline-flex; align-items: center; justify-content: center;
+  width: 32px; height: 32px; border-radius: 8px;
+  background: linear-gradient(135deg, var(--teal), #22A898);
+  font-size: 15px; margin-bottom: 4px;
 }
-.tags { display: flex; flex-wrap: wrap; gap: 6px; }
-.tag {
-  font-size: 11px; color: var(--slate); background: var(--panel);
-  border: 1px solid var(--border); border-radius: 999px; padding: 3px 10px;
+.cert-title { font-size: 12.5px; font-weight: 600; color: var(--ink); line-height: 1.4; }
+.cert-issuer { font-size: 11px; color: var(--blue); font-weight: 400; }
+.cert-date { font-size: 10.5px; color: var(--muted); margin-top: 2px; }
+
+/* EHRENAMT */
+.ehren-card {
+  background: var(--card); border: 1px solid var(--border); border-radius: 14px; padding: 24px;
+  display: grid; grid-template-columns: auto 1fr; gap: 18px; align-items: start;
+  transition: border-color .2s;
 }
+.ehren-card:hover { border-color: var(--sky); }
+.ehren-icon { width: 44px; height: 44px; border-radius: 10px; background: linear-gradient(135deg, var(--teal), #22A898); display: flex; align-items: center; justify-content: center; font-size: 20px; flex-shrink: 0; }
+.ehren-title { font-family: 'Playfair Display', Georgia, serif; font-size: 15px; font-weight: 500; color: var(--ink); margin-bottom: 4px; }
+.ehren-sub { font-size: 12px; color: var(--blue); font-weight: 600; margin-bottom: 10px; }
+.ehren-list { list-style: none; }
+.ehren-list li { font-size: 13px; color: var(--slate); font-weight: 300; line-height: 1.8; padding-left: 14px; position: relative; }
+.ehren-list li::before { content: '›'; position: absolute; left: 0; color: var(--sky); font-weight: 700; }
 
 /* CONTACT */
 .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 52px; align-items: center; }
-@media (max-width: 820px) { .contact-grid { grid-template-columns: 1fr; gap: 32px; } }
+@media (max-width: 820px) { .contact-grid { grid-template-columns: 1fr; gap: 28px; } }
 .contact-text p { font-size: 14px; line-height: 2; color: var(--slate); font-weight: 300; }
 .contact-cards { display: flex; flex-direction: column; gap: 10px; }
-.contact-card {
-  display: flex; align-items: center; gap: 12px;
-  padding: 13px 16px; background: var(--panel);
-  border: 1px solid var(--border); border-radius: 11px;
-  text-decoration: none; transition: border-color .2s, background .2s;
-}
+.contact-card { display: flex; align-items: center; gap: 12px; padding: 13px 16px; background: var(--panel); border: 1px solid var(--border); border-radius: 11px; text-decoration: none; transition: border-color .2s, background .2s; }
 .contact-card:hover { border-color: var(--sky); background: #EEF3FA; }
-.c-icon {
-  width: 32px; height: 32px; border-radius: 8px;
-  background: var(--navy); display: flex; align-items: center;
-  justify-content: center; font-size: 13px; color: #EFF4FA; font-weight: 700; flex-shrink: 0;
-}
+.c-icon { width: 32px; height: 32px; border-radius: 8px; background: var(--navy); display: flex; align-items: center; justify-content: center; font-size: 13px; color: #EFF4FA; font-weight: 700; flex-shrink: 0; }
 .c-label { font-size: 10px; text-transform: uppercase; letter-spacing: 0.1em; color: var(--muted); }
 .c-value { font-size: 13px; color: var(--ink); font-weight: 500; margin-top: 1px; }
 
 /* FOOTER */
-footer {
-  height: 4px;
-  background: linear-gradient(90deg, #1A3560 0%, #2E5FA3 40%, #4A7FC1 60%, #2E5FA3 80%, #1A3560 100%);
-}
+footer { height: 4px; background: linear-gradient(90deg, #1A3560 0%, #2E5FA3 40%, #4A7FC1 60%, #2E5FA3 80%, #1A3560 100%); }
 
 /* REVEAL */
 .reveal { transition: opacity .7s ease, transform .7s ease; }
-.js-loaded .reveal { opacity: 0; transform: translateY(20px); }
+.js-loaded .reveal { opacity: 0; transform: translateY(18px); }
 .js-loaded .reveal.in { opacity: 1; transform: none; }
 </style>
 </head>
@@ -310,10 +273,11 @@ footer {
   <a href="#" class="nav-brand">WAHB Mohamed Amine</a>
   <ul class="nav-links">
     <li><a href="#about">Über mich</a></li>
-    <li><a href="#education">Ausbildung</a></li>
-    <li><a href="#experience">Erfahrung</a></li>
-    <li><a href="#skills">Kompetenzen</a></li>
-    <li><a href="#contact">Kontakt</a></li>
+    <li><a href="#erfahrung">Erfahrung</a></li>
+    <li><a href="#bildung">Bildung</a></li>
+    <li><a href="#zertifikate">Zertifikate</a></li>
+    <li><a href="#kompetenzen">Kompetenzen</a></li>
+    <li><a href="#kontakt">Kontakt</a></li>
   </ul>
 </nav>
 
@@ -321,33 +285,31 @@ footer {
 <section class="hero">
   <div class="hero-bg"></div>
   <div class="hero-inner">
-    <div class="hero-left">
-      <div class="hero-eyebrow">
-        <span class="pulse-dot"></span>
-        Bewerbung · Pflegefachmann / Biologielaborant
-      </div>
+    <div>
+      <div class="hero-eyebrow"><span class="pulse-dot"></span>Bewerbung · Ausbildung Pflegefachmann</div>
       <h1 class="hero-name">WAHB<br><em>Mohamed Amine</em></h1>
-      <p class="hero-role">Ba. BSc — Biologie &amp; Humanphysiologie</p>
-      <p class="hero-desc">Motivierter Naturwissenschaftler aus Casablanca mit klinischer und labortechnischer Erfahrung. Bereit, meine Kenntnisse in einem professionellen Umfeld in Deutschland einzubringen.</p>
+      <p class="hero-role">BSc Biologie &amp; Humanphysiologie · Pflegekompetenz</p>
+      <p class="hero-desc">Motivierter Bewerber aus Casablanca mit klinischer Erfahrung, mehreren Pflegezertifikaten und Deutschkenntnissen auf B2-Niveau. Pflege ist für mich keine Karrierechance — es ist eine Berufung.</p>
       <div class="hero-actions">
-        <a href="https://tinyurl.com/wahbma" class="btn btn-primary">Bewerbungsunterlagen</a>
-        <a href="#contact" class="btn btn-ghost">Kontakt aufnehmen</a>
+        <a href="https://tinyurl.com/wahbma" class="btn btn-primary" target="_blank">Bewerbungsunterlagen</a>
+        <a href="#kontakt" class="btn btn-ghost">Kontakt aufnehmen</a>
       </div>
     </div>
-    <div class="hero-right">
+    <div>
       <div class="stats-card">
         <div class="stats-card-header">Auf einen Blick</div>
         <div class="stats-grid">
-          <div><div class="stat-num">4<span>+</span></div><div class="stat-label">Sprachen</div></div>
-          <div><div class="stat-num">2<span>+</span></div><div class="stat-label">Praktika</div></div>
-          <div><div class="stat-num">3<span>+</span></div><div class="stat-label">Jahre Studium</div></div>
-          <div><div class="stat-num">1<span>×</span></div><div class="stat-label">Forschungsprojekt</div></div>
+          <div><div class="stat-num">5<span>+</span></div><div class="stat-label">Sprachen</div></div>
+          <div><div class="stat-num">3<span>×</span></div><div class="stat-label">Klinische Praktika</div></div>
+          <div><div class="stat-num">8<span>+</span></div><div class="stat-label">Pflegezertifikate</div></div>
+          <div><div class="stat-num">B2</div><div class="stat-label">Deutschniveau</div></div>
         </div>
         <div class="lang-row">
-          <div class="lang-item"><span class="lang-name">Arabisch</span><div class="lang-bar"><div class="lang-fill" data-w="100%"></div></div></div>
-          <div class="lang-item"><span class="lang-name">Deutsch</span><div class="lang-bar"><div class="lang-fill" data-w="85%"></div></div></div>
-          <div class="lang-item"><span class="lang-name">Englisch</span><div class="lang-bar"><div class="lang-fill" data-w="90%"></div></div></div>
-          <div class="lang-item"><span class="lang-name">Französisch</span><div class="lang-bar"><div class="lang-fill" data-w="80%"></div></div></div>
+          <div class="lang-item"><span class="lang-name">Arabisch</span><div class="lang-bar"><div class="lang-fill" data-w="100%"></div></div><span class="lang-level">C2</span></div>
+          <div class="lang-item"><span class="lang-name">Deutsch</span><div class="lang-bar"><div class="lang-fill" data-w="85%"></div></div><span class="lang-level">B2</span></div>
+          <div class="lang-item"><span class="lang-name">Englisch</span><div class="lang-bar"><div class="lang-fill" data-w="90%"></div></div><span class="lang-level">C2</span></div>
+          <div class="lang-item"><span class="lang-name">Französisch</span><div class="lang-bar"><div class="lang-fill" data-w="80%"></div></div><span class="lang-level">B1</span></div>
+          <div class="lang-item"><span class="lang-name">Tamazight</span><div class="lang-bar"><div class="lang-fill" data-w="100%"></div></div><span class="lang-level">C2</span></div>
         </div>
       </div>
     </div>
@@ -358,144 +320,285 @@ footer {
 <section id="about" style="background:var(--card);border-top:1px solid var(--border);">
   <div class="section-inner">
     <div class="section-label reveal">Über mich</div>
-    <h2 class="section-title reveal">Engagiert. Wissenschaftlich. <em>Menschlich.</em></h2>
+    <h2 class="section-title reveal">Empathie. Wissenschaft. <em>Berufung.</em></h2>
     <div class="about-grid">
       <div class="about-text reveal">
-        <p>Ich bin <strong>WAHB Mohamed Amine</strong>, Absolvent der Fakultät für Naturwissenschaften Ben M'Sik an der Universität Hassan II in Casablanca. Mein Studium der <strong>Biologie und Humanphysiologie</strong> vermittelte mir ein tiefes Verständnis des menschlichen Körpers und biologischer Prozesse.</p>
-        <p>Durch Praktika in Krankenhäusern und Forschungseinrichtungen sammelte ich praktische Erfahrungen in der Patientenbetreuung und im Labor. Mein Forschungsprojekt über <strong>Saccharomyces cerevisiae</strong> vertiefte mein analytisches Denken.</p>
-        <p>Ich suche eine <strong>Ausbildung in Deutschland</strong> — als Pflegefachmann oder Biologielaborant — um meine Fähigkeiten weiterzuentwickeln.</p>
+        <p>Mein Name ist <strong>Mohamed Amine Wahb</strong>, ich bin 24 Jahre alt und komme aus Casablanca, Marokko. Mit meinem <strong>Bachelor in Biologie und Humanphysiologie</strong> bringe ich ein tiefes Verständnis des menschlichen Körpers, das ich in Krankenhäusern und Forschungslaboren praktisch angewandt habe.</p>
+        <p>Der Wunsch, in der Pflege zu arbeiten, entstand durch sehr persönliche Erlebnisse: Als ich meine <strong>Großmutter</strong> während ihrer schweren Krankheit begleitete und meinem verletzten <strong>Freund</strong> nach einem Sportunfall half, erkannte ich, wie sehr Empathie und menschliche Präsenz die Genesung beeinflussen.</p>
+        <p>Ich habe zielgerichtet <strong>acht Pflegezertifikate</strong> erworben, lerne Deutsch aktiv auf <strong>B2-Niveau</strong> beim Centre Eclipse in Casablanca und suche eine Ausbildung als Pflegefachmann in Deutschland.</p>
       </div>
       <div class="info-list reveal">
         <div class="info-item"><div class="info-icon">📍</div><div><div class="info-label">Standort</div><div class="info-value">Casablanca, Marokko</div></div></div>
-        <div class="info-item"><div class="info-icon">🎓</div><div><div class="info-label">Abschluss</div><div class="info-value">Ba. BSc — Biologie &amp; Humanphysiologie</div></div></div>
-        <div class="info-item"><div class="info-icon">🏛</div><div><div class="info-label">Universität</div><div class="info-value">Hassan II — Fakultät Ben M'Sik</div></div></div>
-        <div class="info-item"><div class="info-icon">🎯</div><div><div class="info-label">Ziel</div><div class="info-value">Ausbildung in Deutschland · Pflege oder Labor</div></div></div>
-        <div class="info-item"><div class="info-icon">✉</div><div><div class="info-label">E-Mail</div><div class="info-value"><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="9af7f5f2fbf7fffefbf7f3f4ffedfbf2f8dafdf7fbf3f6b4f9f5f7">[email&#160;protected]</a></div></div></div>
+        <div class="info-item"><div class="info-icon">🎂</div><div><div class="info-label">Geburtsdatum</div><div class="info-value">12. Januar 2002</div></div></div>
+        <div class="info-item"><div class="info-icon">🎓</div><div><div class="info-label">Abschluss</div><div class="info-value">BSc Biologie &amp; Humanphysiologie</div></div></div>
+        <div class="info-item"><div class="info-icon">🏛</div><div><div class="info-label">Universität</div><div class="info-value">Hassan II — Fakultät Ben M'Sik, Casablanca</div></div></div>
+        <div class="info-item"><div class="info-icon">🇩🇪</div><div><div class="info-label">Deutsch</div><div class="info-value">B2-Kurs · Centre Eclipse, seit Sept. 2025</div></div></div>
+        <div class="info-item"><div class="info-icon">🚗</div><div><div class="info-label">Führerschein</div><div class="info-value">Klasse B · gültig bis 09.03.2031</div></div></div>
+        <div class="info-item"><div class="info-icon">✉</div><div><div class="info-label">E-Mail</div><div class="info-value">mohamedaminewahb@gmail.com</div></div></div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- EDUCATION -->
-<section id="education">
+<!-- ERFAHRUNG -->
+<section id="erfahrung">
+  <div class="section-inner">
+    <div class="section-label reveal">Praktische Erfahrung</div>
+    <h2 class="section-title reveal">Klinik, Labor &amp; <em>Forschung</em></h2>
+    <div class="timeline">
+
+      <div class="timeline-item reveal">
+        <div class="timeline-date">Sep – Dez 2023</div>
+        <div class="timeline-axis"><div class="t-dot"></div><div class="t-line"></div></div>
+        <div class="timeline-body">
+          <div class="t-title">Praktikant — Medizintechnisches Labor</div>
+          <div class="t-sub">Hôpital Privé International Casablanca (CIM Santé Gruppe)</div>
+          <p class="t-desc">Praktikum im medizinisch-technischen Labor eines Privatkrankenhauses. Durchführung von Blutanalysen (kleines Blutbild, Gerinnungstests). Selbstständige serologische Tests und Mitarbeit bei bakteriologischen Verfahren. Probenvorbereitung und Bedienung von Laborgeräten. Bescheinigung ausgestellt am 04.12.2023.</p>
+          <div class="t-tags"><span class="t-tag">Blutanalyse</span><span class="t-tag">Serologie</span><span class="t-tag">Biochemie</span><span class="t-tag">Bakteriologie</span><span class="t-tag">Präanalytik</span></div>
+        </div>
+      </div>
+
+      <div class="timeline-item reveal">
+        <div class="timeline-date">09.–10. Okt. 2023</div>
+        <div class="timeline-axis"><div class="t-dot"></div><div class="t-line"></div></div>
+        <div class="timeline-body">
+          <div class="t-title">Teilnehmer — African BioGenome Project (AfricaBP)</div>
+          <div class="t-sub">Universität Mohammed V de Rabat (UM5R) · Regional Workshop</div>
+          <p class="t-desc">Workshop zur Biodiversitätsgenomik in Nord-Afrika. Grundlagen in Genomik, Bioinformatik und Molekularbiologie vertieft. Zertifikat unterzeichnet von Prof. Anne Muigai (Chair, AfricaBP) und Prof. Mohamed Regragui (Dekan UM5R).</p>
+          <div class="t-tags"><span class="t-tag">Genomik</span><span class="t-tag">Bioinformatik</span><span class="t-tag">Molekularbiologie</span></div>
+        </div>
+      </div>
+
+      <div class="timeline-item reveal">
+        <div class="timeline-date">Mrz – Jun 2023</div>
+        <div class="timeline-axis"><div class="t-dot"></div><div class="t-line"></div></div>
+        <div class="timeline-body">
+          <div class="t-title">Praktikant Forschung &amp; Mikrobiologie</div>
+          <div class="t-sub">Labor für Ökologie und Umwelt · Fakultät Ben M'Sik, Casablanca</div>
+          <p class="t-desc">Abschlusspraktikum in der Mikrobiologie-Einheit. Praxis in mikrobiologischen Kulturtechniken sowie Überwachung und Analyse von Kulturparametern. Fundierte Erfahrung im Umgang mit verschiedenen mikrobiellen Stämmen. Bescheinigung durch Prof. El Kanouni Abdallah.</p>
+          <div class="t-tags"><span class="t-tag">Kulturtechniken</span><span class="t-tag">Mikrobielle Stämme</span><span class="t-tag">Bioreaktorsystem</span><span class="t-tag">pH-Überwachung</span></div>
+        </div>
+      </div>
+
+      <div class="timeline-item reveal">
+        <div class="timeline-date">Jan – Jun 2023</div>
+        <div class="timeline-axis"><div class="t-dot"></div><div class="t-line"></div></div>
+        <div class="timeline-body">
+          <div class="t-title">Abschlussprojekt — Eigenständige Forschung</div>
+          <div class="t-sub">Modul Mikrobiologie · Abteilung Biologie, Fakultät Ben M'Sik</div>
+          <p class="t-desc">Untersuchung des Einflusses von Glukosekonzentrationen auf pH-Wert und Biomasseentwicklung von <em>Saccharomyces cerevisiae</em>. Anwendung mikrobiologischer Methoden, Auswertung mit statistischen und IT-Werkzeugen. Wissenschaftlicher Bericht verfasst.</p>
+          <div class="t-tags"><span class="t-tag">S. cerevisiae</span><span class="t-tag">pH-Analyse</span><span class="t-tag">Biomasse</span><span class="t-tag">Statistik</span></div>
+        </div>
+      </div>
+
+      <div class="timeline-item reveal">
+        <div class="timeline-date">Jul – Aug 2022</div>
+        <div class="timeline-axis"><div class="t-dot"></div><div class="t-line"></div></div>
+        <div class="timeline-body">
+          <div class="t-title">Medizintechnisches Praktikum</div>
+          <div class="t-sub">Krankenhauszentrum der Bezirke Moulay Rachid, Casablanca</div>
+          <p class="t-desc">Praktikum in der Laboreinheit eines öffentlichen Krankenhauses. Fundierte Kenntnisse in Probenvorbereitung, -annahme und -dokumentation (Präanalytik). Analysemethoden in klinischer Biochemie und Hämatologie. Einhaltung von QM-Richtlinien und Hygienestandards. Bescheinigt durch Dr. Said Bellassine (Medizinischer Direktor).</p>
+          <div class="t-tags"><span class="t-tag">Hämatologie</span><span class="t-tag">Biochemie</span><span class="t-tag">Präanalytik</span><span class="t-tag">QM</span><span class="t-tag">Hygiene</span></div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- BILDUNGSWEG -->
+<section id="bildung" style="background:var(--card);border-top:1px solid var(--border);border-bottom:1px solid var(--border);">
   <div class="section-inner">
     <div class="section-label reveal">Bildungsweg</div>
     <h2 class="section-title reveal">Akademische <em>Laufbahn</em></h2>
     <div class="timeline">
+
       <div class="timeline-item reveal">
-        <div class="timeline-date">2021 – 2024</div>
+        <div class="timeline-date">Sep 2020 – Jun 2023</div>
         <div class="timeline-axis"><div class="t-dot"></div><div class="t-line"></div></div>
         <div class="timeline-body">
           <div class="t-title">Bachelor of Science — Biologie &amp; Humanphysiologie</div>
-          <div class="t-sub">Fakultät Ben M'Sik · Universität Hassan II, Casablanca</div>
-          <p class="t-desc">Schwerpunkte: Zellbiologie, Humanphysiologie, Biochemie, Mikrobiologie. Eigenständiges Forschungsprojekt über <em>Saccharomyces cerevisiae</em>.</p>
+          <div class="t-sub">Fakultät der Wissenschaften Ben M'Sik · Universität Hassan II, Casablanca</div>
+          <p class="t-desc">Schwerpunkt: Biologie und menschliche Physiologie. Erfolgreicher Abschluss mit Prädikat „Ausreichend" (Ausgestellt 20.07.2023, Nr. 2023/202203266). Äquivalent zu einem deutschen Bachelor — anerkannt als H+ Staatliche Hochschule.</p>
+          <div class="t-tags"><span class="t-tag">Zellbiologie</span><span class="t-tag">Humanphysiologie</span><span class="t-tag">Biochemie</span><span class="t-tag">Mikrobiologie</span><span class="t-tag">Anatomie</span></div>
         </div>
       </div>
+
       <div class="timeline-item reveal">
-        <div class="timeline-date">2020 – 2021</div>
+        <div class="timeline-date">Sep 2019 – Jun 2020</div>
         <div class="timeline-axis"><div class="t-dot"></div><div class="t-line"></div></div>
         <div class="timeline-body">
-          <div class="t-title">Abitur — Naturwissenschaften</div>
-          <div class="t-sub">Casablanca, Marokko</div>
-          <p class="t-desc">Naturwissenschaftlicher Zweig mit Schwerpunkten in Biologie, Chemie, Physik und Mathematik.</p>
+          <div class="t-title">Abitur — Experimentelle Wissenschaften</div>
+          <div class="t-sub">Gymnasium Jaafar El Fassi · Casablanca, Marokko</div>
+          <p class="t-desc">Schulzweig: Physikwissenschaften (Französisch). Prädikat: befriedigend. Gesamtdurchschnitt: 13,69. Stärken: Mathematik (14,50), Englisch (14,25), Philosophie (15,00). Zertifiziert und ins Deutsche übersetzt durch Redouane Wassif (Düsseldorf, 15.08.2025).</p>
         </div>
       </div>
+
+      <div class="timeline-item reveal">
+        <div class="timeline-date">seit Sep 2025</div>
+        <div class="timeline-axis"><div class="t-dot"></div><div class="t-line"></div></div>
+        <div class="timeline-body">
+          <div class="t-title">Deutschkurs Niveau B2</div>
+          <div class="t-sub">Centre Eclipse · Casablanca, Marokko</div>
+          <p class="t-desc">Aktiver B2-Teilnehmer seit 15.09.2025. Teilnahmebestätigung ausgestellt am 20.10.2025 (CIN: BA15562). Ziel: B2-Prüfungsablegung zur Anerkennung in Deutschland.</p>
+          <div class="t-tags"><span class="t-tag">B2-Niveau</span><span class="t-tag">Wort und Schrift</span><span class="t-tag">Fachsprache Pflege</span></div>
+        </div>
+      </div>
+
     </div>
   </div>
 </section>
 
-<!-- EXPERIENCE -->
-<section id="experience" style="background:var(--card);border-top:1px solid var(--border);border-bottom:1px solid var(--border);">
+<!-- ZERTIFIKATE -->
+<section id="zertifikate">
   <div class="section-inner">
-    <div class="section-label reveal">Praktische Erfahrung</div>
-    <h2 class="section-title reveal">Klinik &amp; <em>Labor</em></h2>
-    <div class="timeline">
-      <div class="timeline-item reveal">
-        <div class="timeline-date">Klinik</div>
-        <div class="timeline-axis"><div class="t-dot"></div><div class="t-line"></div></div>
-        <div class="timeline-body">
-          <div class="t-title">Krankenhauspraktikum — Patientenbetreuung</div>
-          <div class="t-sub">Krankenhaus · Casablanca, Marokko</div>
-          <p class="t-desc">Unterstützung des Pflegepersonals bei der Grundversorgung. Vitalzeichen, Dokumentation, Hygienemaßnahmen und Patientenkommunikation.</p>
-        </div>
+    <div class="section-label reveal">Nachweise &amp; Qualifikationen</div>
+    <h2 class="section-title reveal">Zertifikate &amp; <em>Weiterbildungen</em></h2>
+    <div class="certs-grid">
+
+      <div class="cert-card reveal">
+        <div class="cert-badge">🏥</div>
+        <div class="cert-title">Vorbereitungskurs für Pflegeberufe</div>
+        <div class="cert-issuer">German Training Center, Casablanca</div>
+        <div class="cert-date">15.01.2025 – 15.04.2025 · Abschlusszeugnis 29.05.2025</div>
       </div>
-      <div class="timeline-item reveal">
-        <div class="timeline-date">Labor</div>
-        <div class="timeline-axis"><div class="t-dot"></div><div class="t-line"></div></div>
-        <div class="timeline-body">
-          <div class="t-title">Laborpraktikum — Biologische Analysen</div>
-          <div class="t-sub">Forschungseinrichtung · Casablanca, Marokko</div>
-          <p class="t-desc">Mikrobiologische und biochemische Analysen. Handhabung von Mikroskop, Zentrifuge, Spektrophotometer. Probenaufbereitung und Protokollführung.</p>
-        </div>
+
+      <div class="cert-card reveal">
+        <div class="cert-badge">🌍</div>
+        <div class="cert-title">Vielfalt Pflegen — eLearning</div>
+        <div class="cert-issuer">Berufsfachschule Paulo Freire / Zentrum ÜBERLEBEN, Berlin</div>
+        <div class="cert-date">06.07.2025 · 11 Fortbildungspunkte (Registrierung beruflich Pflegender)</div>
       </div>
-      <div class="timeline-item reveal">
-        <div class="timeline-date">Forschung</div>
-        <div class="timeline-axis"><div class="t-dot"></div><div class="t-line"></div></div>
-        <div class="timeline-body">
-          <div class="t-title">Eigenständiges Forschungsprojekt</div>
-          <div class="t-sub">Universität Hassan II · Fakultät Ben M'Sik</div>
-          <p class="t-desc">Untersuchung von <em>Saccharomyces cerevisiae</em> unter verschiedenen Kulturbedingungen. Planung, Durchführung, Auswertung und wissenschaftlicher Bericht.</p>
-        </div>
+
+      <div class="cert-card reveal">
+        <div class="cert-badge">👶</div>
+        <div class="cert-title">Pflegebedürftige Kinder — ADHS &amp; ASS</div>
+        <div class="cert-issuer">PflegeBetreuer (Gesundheit von Morgen GmbH)</div>
+        <div class="cert-date">06.07.2025 · nach § 45 SGB XI</div>
+      </div>
+
+      <div class="cert-card reveal">
+        <div class="cert-badge">🏠</div>
+        <div class="cert-title">Grundlagen der häuslichen Pflege</div>
+        <div class="cert-issuer">curendo (Töchter &amp; Söhne GmbH), Berlin</div>
+        <div class="cert-date">06.07.2025 · 6 Stunden · § 45 SGB XI</div>
+      </div>
+
+      <div class="cert-card reveal">
+        <div class="cert-badge">💼</div>
+        <div class="cert-title">Pflege und Beruf: Organisation &amp; Unterstützung</div>
+        <div class="cert-issuer">Pflegeschule24.de (Aulis Consult GmbH), Hamburg</div>
+        <div class="cert-date">06.07.2025 · 122 Minuten · § 45 SGB XI</div>
+      </div>
+
+      <div class="cert-card reveal">
+        <div class="cert-badge">❤️</div>
+        <div class="cert-title">Flucht und Trauma — Betreuung Geflüchteter</div>
+        <div class="cert-issuer">Digitale Akademie der Johanniter-Unfall-Hilfe e.V.</div>
+        <div class="cert-date">12.01.2026 · bildungsportal.johanniter.de</div>
+      </div>
+
+      <div class="cert-card reveal">
+        <div class="cert-badge">🧬</div>
+        <div class="cert-title">Grundkurs Krankenpflege — Basic Level</div>
+        <div class="cert-issuer">bbw-Gruppe / Bayerische Staatskanzlei · hub4africa.bayern</div>
+        <div class="cert-date">07.07.2025 · Anatomie, Pharmakologie, Pflegerolle</div>
+      </div>
+
+      <div class="cert-card reveal">
+        <div class="cert-badge">🌐</div>
+        <div class="cert-title">EF SET English Certificate — C2 Proficient</div>
+        <div class="cert-issuer">EF Education First · cert.efset.org/YCSNbW</div>
+        <div class="cert-date">22. Feb 2024 · Score 72/100 · Reading C1 · Listening C2</div>
+      </div>
+
+      <div class="cert-card reveal">
+        <div class="cert-badge">🔬</div>
+        <div class="cert-title">AfricaBP Genomics Workshop</div>
+        <div class="cert-issuer">African BioGenome Project · Université Mohammed V, Rabat</div>
+        <div class="cert-date">09.–10. Okt 2023 · Biodiversitätsgenomik, Bioinformatik</div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- EHRENAMT -->
+<section style="background:var(--card);border-top:1px solid var(--border);border-bottom:1px solid var(--border);">
+  <div class="section-inner">
+    <div class="section-label reveal">Gesellschaftliches Engagement</div>
+    <h2 class="section-title reveal">Ehrenamtliche <em>Tätigkeit</em></h2>
+    <div class="ehren-card reveal">
+      <div class="ehren-icon">🤲</div>
+      <div>
+        <div class="ehren-title">Aktives Mitglied — Fondation Assalam pour le Développement Social</div>
+        <div class="ehren-sub">seit Februar 2022 · Casablanca, Marokko · Bestätigung ausgestellt 21. Juli 2025</div>
+        <ul class="ehren-list">
+          <li>Teilnahme an medizinischen Karawanen zur kostenlosen Gesundheitsversorgung benachteiligter Bevölkerungsgruppen</li>
+          <li>Organisation kultureller und sozialer Veranstaltungen, insbesondere zum Tag des Waisen</li>
+          <li>Unterstützung bei Hilfsaktionen für Waisen und Bedürftige — Verteilung von Lebensmitteln und Bildungsaktivitäten</li>
+          <li>Mitwirkung an Programmen zur Sensibilisierung der Gemeinschaft (Solidarität, Staatsbürgerschaft, soziale Entwicklung)</li>
+        </ul>
       </div>
     </div>
   </div>
 </section>
 
-<!-- SKILLS -->
-<section id="skills">
+<!-- KOMPETENZEN -->
+<section id="kompetenzen">
   <div class="section-inner">
     <div class="section-label reveal">Kompetenzen</div>
     <h2 class="section-title reveal">Fähigkeiten &amp; <em>Kenntnisse</em></h2>
     <div class="skills-grid">
       <div class="skill-card reveal">
-        <div class="skill-icon">🔬</div>
-        <div class="skill-title">Labortechniken</div>
-        <div class="tags"><span class="tag">Mikroskopie</span><span class="tag">Zentrifugation</span><span class="tag">Spektrophotometrie</span><span class="tag">PCR</span><span class="tag">Sterilisation</span></div>
-      </div>
-      <div class="skill-card reveal">
         <div class="skill-icon">🏥</div>
         <div class="skill-title">Pflege &amp; Klinik</div>
-        <div class="tags"><span class="tag">Grundpflege</span><span class="tag">Vitalzeichen</span><span class="tag">Hygiene</span><span class="tag">Patientenkommunikation</span><span class="tag">Dokumentation</span></div>
+        <div class="tags"><span class="tag">Grundpflege</span><span class="tag">Vitalzeichen</span><span class="tag">Prophylaxen</span><span class="tag">Hygiene</span><span class="tag">Patientenkommunikation</span><span class="tag">Dokumentation</span><span class="tag">Notfallverhalten</span></div>
+      </div>
+      <div class="skill-card reveal">
+        <div class="skill-icon">🔬</div>
+        <div class="skill-title">Labortechniken</div>
+        <div class="tags"><span class="tag">Mikroskopie</span><span class="tag">Zentrifugation</span><span class="tag">Spektrophotometrie</span><span class="tag">Blutanalyse</span><span class="tag">Serologie</span><span class="tag">Kulturtechniken</span><span class="tag">Sterilisation</span></div>
       </div>
       <div class="skill-card reveal">
         <div class="skill-icon">🧬</div>
-        <div class="skill-title">Wissenschaft</div>
-        <div class="tags"><span class="tag">Zellbiologie</span><span class="tag">Physiologie</span><span class="tag">Biochemie</span><span class="tag">Mikrobiologie</span><span class="tag">Forschung</span></div>
+        <div class="skill-title">Naturwissenschaften</div>
+        <div class="tags"><span class="tag">Humanphysiologie</span><span class="tag">Zellbiologie</span><span class="tag">Biochemie</span><span class="tag">Mikrobiologie</span><span class="tag">Anatomie</span><span class="tag">Pharmakologie</span></div>
       </div>
       <div class="skill-card reveal">
         <div class="skill-icon">🌐</div>
         <div class="skill-title">Sprachen</div>
-        <div class="tags"><span class="tag">Arabisch — Muttersprache</span><span class="tag">Französisch — Fließend</span><span class="tag">Englisch — Fließend</span><span class="tag">Deutsch — Grundkenntnisse</span></div>
+        <div class="tags"><span class="tag">Arabisch — Muttersprache</span><span class="tag">Tamazight — Muttersprache</span><span class="tag">Englisch — C2 EF SET</span><span class="tag">Deutsch — B2</span><span class="tag">Französisch — B1</span></div>
       </div>
       <div class="skill-card reveal">
         <div class="skill-icon">💻</div>
-        <div class="skill-title">Digital &amp; Design</div>
-        <div class="tags"><span class="tag">Adobe Photoshop</span><span class="tag">Microsoft Office</span><span class="tag">Datenanalyse</span><span class="tag">Wiss. Berichte</span></div>
+        <div class="skill-title">Digital &amp; Analyse</div>
+        <div class="tags"><span class="tag">LIMS/LIS</span><span class="tag">MS Office</span><span class="tag">SPSS</span><span class="tag">R</span><span class="tag">Photoshop</span><span class="tag">Illustrator</span><span class="tag">Premiere Pro</span></div>
       </div>
       <div class="skill-card reveal">
         <div class="skill-icon">🤝</div>
         <div class="skill-title">Soft Skills</div>
-        <div class="tags"><span class="tag">Teamarbeit</span><span class="tag">Empathie</span><span class="tag">Lernbereitschaft</span><span class="tag">Eigeninitiative</span><span class="tag">Sorgfalt</span></div>
+        <div class="tags"><span class="tag">Empathie</span><span class="tag">Teamarbeit</span><span class="tag">Schichtbereitschaft</span><span class="tag">Lernbereitschaft</span><span class="tag">Belastbarkeit</span><span class="tag">Eigeninitiative</span><span class="tag">Multikulturell</span></div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- CONTACT -->
-<section id="contact" style="background:var(--card);border-top:1px solid var(--border);">
+<!-- KONTAKT -->
+<section id="kontakt" style="background:var(--card);border-top:1px solid var(--border);">
   <div class="section-inner">
     <div class="section-label reveal">Kontakt</div>
     <h2 class="section-title reveal">Bereit für ein <em>Gespräch?</em></h2>
     <div class="contact-grid">
       <div class="contact-text reveal">
-        <p>Ich freue mich über jede Möglichkeit, mich persönlich vorzustellen. Für Rückfragen oder ein Vorstellungsgespräch stehe ich jederzeit zur Verfügung. Meine vollständigen Bewerbungsunterlagen finden Sie unter dem untenstehenden Link.</p>
+        <p>Ich freue mich über jede Möglichkeit, mich persönlich vorzustellen. Ich bin flexibel bezüglich Arbeitsort und Schichtarbeit und stehe für ein Vorstellungsgespräch jederzeit zur Verfügung. Meine vollständigen Bewerbungsunterlagen — Anschreiben, Lebenslauf, Zeugnisse und Zertifikate — finden Sie unter dem untenstehenden Link.</p>
         <br>
-        <a href="https://tinyurl.com/wahbma" class="btn btn-primary">Alle Unterlagen öffnen</a>
+        <a href="https://tinyurl.com/wahbma" class="btn btn-primary" target="_blank">Alle Unterlagen öffnen</a>
       </div>
       <div class="contact-cards reveal">
-        <a href="/cdn-cgi/l/email-protection#b2dfdddad3dfd7d6d3dfdbdcd7c5d3dad0f2d5dfd3dbde9cd1dddf" class="contact-card">
+        <a href="mailto:mohamedaminewahb@gmail.com" class="contact-card">
           <div class="c-icon">@</div>
-          <div><div class="c-label">E-Mail</div><div class="c-value"><span class="__cf_email__" data-cfemail="d7bab8bfb6bab2b3b6babeb9b2a0b6bfb597b0bab6bebbf9b4b8ba">[email&#160;protected]</span></div></div>
+          <div><div class="c-label">E-Mail</div><div class="c-value">mohamedaminewahb@gmail.com</div></div>
         </a>
         <a href="tel:+212623373022" class="contact-card">
           <div class="c-icon">✆</div>
@@ -512,39 +615,30 @@ footer {
 
 <footer></footer>
 
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+<script>
 (function() {
-  // Only enable animations if JS is running fine
   document.body.classList.add('js-loaded');
 
-  // Reveal on scroll
   var els = document.querySelectorAll('.reveal');
-  if (!els.length) return;
-
   function check() {
     var vh = window.innerHeight;
-    els.forEach(function(el) {
-      var rect = el.getBoundingClientRect();
-      if (rect.top < vh - 30) {
-        el.classList.add('in');
-      }
-    });
+    for (var i = 0; i < els.length; i++) {
+      var rect = els[i].getBoundingClientRect();
+      if (rect.top < vh - 20) els[i].classList.add('in');
+    }
   }
-
-  // Run immediately and on scroll
   check();
   window.addEventListener('scroll', check, { passive: true });
   window.addEventListener('resize', check, { passive: true });
 
-  // Language bars — triggered on load with delay so CSS transition plays
+  // Language bars — animate after 400ms
   var bars = document.querySelectorAll('.lang-fill');
   setTimeout(function() {
-    bars.forEach(function(b) {
-      b.style.width = b.getAttribute('data-w');
-    });
+    for (var i = 0; i < bars.length; i++) {
+      bars[i].style.width = bars[i].getAttribute('data-w');
+    }
   }, 400);
 })();
 </script>
-
 </body>
 </html>
