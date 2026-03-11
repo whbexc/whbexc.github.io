@@ -1,0 +1,923 @@
+<!DOCTYPE html>
+
+<html lang="de">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>WAHB Mohamed Amine — Pflegefachmann</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+<style>
+/* ── TOKENS ─────────────────────────────────────────────────────────────── */
+:root {
+  --navy:   #1A3560;
+  --blue:   #2E5FA3;
+  --sky:    #4A7FC1;
+  --sky-lt: #6B9BD1;
+  --teal:   #1A7A6E;
+  --ink:    #1C2E4A;
+  --body:   #3A4F66;
+  --muted:  #7A90A8;
+  --subtle: #B8CADB;
+  --line:   #E2EAF2;
+  --bg:     #F5F7FA;
+  --white:  #FFFFFF;
+  --card:   #FFFFFF;
+  --dark-bg:#0A1628;
+  --dark2:  #0F1E35;
+}
+
+/* ── RESET ──────────────────────────────────────────────────────────────── */
+*,*::before,*::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; font-size: 16px; -webkit-font-smoothing: antialiased; }
+body { background: var(–white); color: var(–ink); font-family: ‘Inter’, -apple-system, BlinkMacSystemFont, sans-serif; font-weight: 400; line-height: 1.6; overflow-x: hidden; }
+a { color: inherit; text-decoration: none; }
+img { display: block; max-width: 100%; }
+::-webkit-scrollbar { width: 0px; }
+
+/* Nav background — adapts to theme */
+nav {
+position: fixed; top: 0; left: 0; right: 0; z-index: 999;
+height: 52px;
+display: flex; align-items: center; justify-content: space-between;
+padding: 0 40px;
+background: rgba(255,255,255,0.85);
+backdrop-filter: saturate(180%) blur(20px);
+-webkit-backdrop-filter: saturate(180%) blur(20px);
+border-bottom: 1px solid rgba(0,0,0,0.06);
+transition: background .3s, border-color .3s, box-shadow .3s;
+}
+.nav-brand {
+font-size: 15px; font-weight: 600; color: var(–ink);
+letter-spacing: -0.01em;
+}
+.nav-brand span { color: var(–sky); font-weight: 300; }
+.nav-links { display: flex; gap: 28px; list-style: none; }
+.nav-links a {
+font-size: 12px; font-weight: 400; color: var(–body);
+transition: color .2s; letter-spacing: -0.01em;
+}
+.nav-links a:hover { color: var(–sky); }
+@media(max-width:768px) {
+nav { padding: 0 20px; }
+.nav-links { display: none; }
+}
+
+/* ══════════════════════════════════════════════════════
+MOBILE — comprehensive phone-friendly pass
+══════════════════════════════════════════════════════ */
+@media(max-width:600px) {
+
+/* Nav */
+nav { height: 48px; padding: 0 16px; }
+.nav-brand { font-size: 13px; }
+
+/* Hero */
+.hero { padding: 96px 20px 72px; text-align: left; align-items: flex-start; }
+.hero-inner { width: 100%; }
+.hero-chip { font-size: 10px; padding: 5px 12px; margin-bottom: 24px; }
+.hero-name { font-size: clamp(28px, 9vw, 44px); white-space: normal; line-height: 1.0; }
+.hero-role { font-size: 16px; }
+.hero-desc { font-size: 14px; text-align: left; margin-bottom: 32px; }
+.hero-actions { justify-content: flex-start; }
+.btn-apple { padding: 12px 22px; font-size: 13px; }
+
+/* Stats strip — 2×2 grid */
+.hero-stats {
+display: grid;
+grid-template-columns: 1fr 1fr;
+gap: 0;
+margin-top: 48px;
+padding-top: 32px;
+border-top: 1px solid rgba(255,255,255,0.07);
+}
+.hero-stat {
+padding: 20px 0;
+border-right: none;
+border-bottom: 1px solid rgba(255,255,255,0.07);
+text-align: left;
+padding-left: 0;
+}
+.hero-stat:nth-child(odd) { padding-right: 16px; border-right: 1px solid rgba(255,255,255,0.07); }
+.hero-stat:nth-child(3),
+.hero-stat:nth-child(4) { border-bottom: none; }
+.hero-stat-num { font-size: 28px; }
+
+/* Sections */
+section { padding: 56px 20px; }
+.subhead { font-size: 15px; margin-bottom: 40px; }
+.headline { font-size: clamp(24px, 7vw, 36px); }
+
+/* About */
+.about-layout { gap: 36px; }
+.about-body p { font-size: 14px; }
+.info-row { padding: 11px 0; gap: 10px; }
+.info-ico { width: 24px; height: 24px; border-radius: 6px; }
+.info-k { font-size: 9px; }
+.info-v { font-size: 12px; }
+
+/* Timeline */
+.timeline { padding-left: 22px; }
+.tl-dot { left: -19px; width: 9px; height: 9px; }
+.tl-item { padding-bottom: 36px; }
+.tl-title { font-size: 15px; }
+.tl-body { font-size: 13px; }
+.tl-chips { gap: 4px; }
+.tl-chip { font-size: 10px; padding: 2px 8px; }
+
+/* Cert grid — single column on phones */
+.cert-grid { grid-template-columns: 1fr; border-radius: 12px; }
+.cert-card { padding: 18px 16px; }
+.cert-name { font-size: 13px; }
+
+/* Skills grid — single column */
+.skills-grid { grid-template-columns: 1fr; gap: 12px; }
+.skill-card { padding: 20px 18px; border-radius: 14px; }
+.sk-title { font-size: 13px; }
+
+/* Vol card */
+.vol-card { padding: 24px 20px; border-radius: 16px; }
+.vol-title { font-size: 17px; }
+.vol-list li { font-size: 13px; }
+
+/* Contact */
+.contact-lede { font-size: 15px; }
+.c-card { padding: 13px 16px; gap: 12px; border-radius: 12px; }
+.c-ico { width: 32px; height: 32px; border-radius: 8px; }
+.c-k { font-size: 9px; }
+.c-v { font-size: 12px; }
+
+/* Footer */
+footer { padding: 20px 16px; }
+.ft-brand { font-size: 13px; }
+.ft-copy { font-size: 10px; }
+
+/* Language bars */
+.lang-name { width: 68px; font-size: 11px; }
+.lang-lvl { font-size: 10px; }
+
+/* Eyebrow */
+.eyebrow { font-size: 11px; }
+}
+
+/* ── HERO ───────────────────────────────────────────────────────────────── */
+.hero {
+background: var(–dark-bg);
+min-height: 100svh;
+display: flex; align-items: center; justify-content: center;
+text-align: center;
+padding: 120px 40px 100px;
+position: relative; overflow: hidden;
+}
+
+/* Subtle radial glow */
+.hero::before {
+content: ‘’;
+position: absolute;
+top: 20%; left: 50%; transform: translateX(-50%);
+width: 700px; height: 500px;
+background: radial-gradient(ellipse, rgba(74,127,193,0.18) 0%, transparent 70%);
+pointer-events: none;
+}
+/* Bottom fade */
+.hero::after {
+content: ‘’;
+position: absolute; bottom: 0; left: 0; right: 0;
+height: 120px;
+background: linear-gradient(to bottom, transparent, var(–dark-bg));
+pointer-events: none;
+}
+
+.hero-inner {
+position: relative; z-index: 1;
+max-width: 860px; margin: 0 auto;
+}
+
+.hero-chip {
+display: inline-flex; align-items: center; gap: 8px;
+background: rgba(74,127,193,0.12);
+border: 1px solid rgba(74,127,193,0.25);
+border-radius: 40px;
+padding: 6px 16px;
+font-size: 11px; font-weight: 500; letter-spacing: 0.06em;
+text-transform: uppercase; color: var(–sky-lt);
+margin-bottom: 32px;
+}
+.chip-dot { width: 5px; height: 5px; border-radius: 50%; background: var(–sky); animation: blink 2.5s ease-in-out infinite; flex-shrink: 0; }
+@keyframes blink { 0%,100%{opacity:1;} 50%{opacity:.3;} }
+
+.hero-name {
+font-size: clamp(32px, 5.5vw, 64px);
+font-weight: 700; color: #FFFFFF;
+letter-spacing: -0.04em; line-height: 1.05;
+margin-bottom: 16px; white-space: nowrap;
+}
+.hero-name span { color: var(–sky-lt); font-weight: 300; }
+
+.hero-role {
+font-size: clamp(16px, 2.5vw, 22px);
+font-weight: 300; color: rgba(255,255,255,0.5);
+letter-spacing: -0.01em; margin-bottom: 28px;
+line-height: 1.4;
+}
+
+.hero-desc {
+font-size: 16px; font-weight: 300;
+color: rgba(255,255,255,0.45);
+line-height: 1.8; max-width: 560px; margin: 0 auto 48px;
+}
+
+.hero-actions { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+
+.btn-apple {
+display: inline-flex; align-items: center; gap: 8px;
+padding: 14px 28px; border-radius: 980px;
+font-size: 14px; font-weight: 500; letter-spacing: -0.01em;
+transition: all .25s ease; cursor: pointer; border: none;
+text-decoration: none;
+}
+.btn-apple-primary {
+background: var(–sky); color: #fff;
+}
+.btn-apple-primary:hover { background: var(–blue); transform: scale(1.02); }
+.btn-apple-ghost {
+background: rgba(255,255,255,0.08);
+border: 1px solid rgba(255,255,255,0.15);
+color: rgba(255,255,255,0.9);
+}
+.btn-apple-ghost:hover { background: rgba(255,255,255,0.14); }
+
+/* Stats strip */
+.hero-stats {
+display: flex; justify-content: center; gap: 0;
+margin-top: 80px; padding-top: 48px;
+border-top: 1px solid rgba(255,255,255,0.07);
+}
+.hero-stat {
+padding: 0 40px; text-align: center;
+border-right: 1px solid rgba(255,255,255,0.07);
+}
+.hero-stat:last-child { border-right: none; }
+.hero-stat-num {
+font-size: 36px; font-weight: 700; color: #fff;
+letter-spacing: -0.03em; line-height: 1;
+margin-bottom: 6px;
+}
+.hero-stat-num span { color: var(–sky-lt); font-weight: 300; }
+.hero-stat-label { font-size: 11px; color: rgba(255,255,255,0.35); letter-spacing: 0.06em; text-transform: uppercase; font-weight: 400; }
+@media(max-width:640px) {
+.hero-stats { flex-wrap: wrap; gap: 0; }
+.hero-stat { border-right: none; padding: 0 20px; }
+}
+
+/* ── SECTION LAYOUT ──────────────────────────────────────────────────────── */
+section { padding: 96px 40px; }
+@media(max-width:640px) { section { padding: 64px 20px; } }
+.section-inner { max-width: 1040px; margin: 0 auto; }
+.section-bg { background: var(–bg); }
+.section-dark { background: var(–dark-bg); }
+
+.eyebrow {
+font-size: 12px; font-weight: 600; letter-spacing: 0.08em;
+text-transform: uppercase; color: var(–sky); margin-bottom: 12px;
+}
+.section-dark .eyebrow { color: var(–sky-lt); }
+
+.headline {
+font-size: clamp(28px, 4vw, 44px);
+font-weight: 700; color: var(–ink);
+letter-spacing: -0.03em; line-height: 1.15;
+margin-bottom: 16px;
+}
+.headline span { color: var(–sky); font-weight: 300; }
+.section-dark .headline { color: #fff; }
+.section-dark .headline span { color: var(–sky-lt); }
+
+.subhead {
+font-size: 17px; font-weight: 300; color: var(–body);
+line-height: 1.7; max-width: 580px; margin-bottom: 64px;
+}
+.section-dark .subhead { color: rgba(255,255,255,0.45); }
+
+/* ── ABOUT ───────────────────────────────────────────────────────────────── */
+.about-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: start; }
+@media(max-width:860px) { .about-layout { grid-template-columns: 1fr; gap: 48px; } }
+
+.about-body p {
+font-size: 15px; line-height: 1.85; color: var(–body);
+font-weight: 300; margin-bottom: 16px;
+}
+.about-body p:last-child { margin-bottom: 0; }
+.about-body strong { color: var(–ink); font-weight: 600; }
+
+.info-grid { display: flex; flex-direction: column; }
+.info-row {
+display: flex; align-items: center; gap: 14px;
+padding: 13px 0; border-bottom: 1px solid var(–line);
+}
+.info-row:first-child { border-top: 1px solid var(–line); }
+.info-ico {
+width: 28px; height: 28px; flex-shrink: 0;
+display: flex; align-items: center; justify-content: center;
+background: var(–bg); border-radius: 7px;
+}
+.info-ico svg { stroke: var(–sky); }
+.info-meta { flex: 1; }
+.info-k { font-size: 10px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(–muted); }
+.info-v { font-size: 13px; font-weight: 400; color: var(–ink); margin-top: 1px; }
+.info-v a { color: var(–sky); }
+
+/* ── TIMELINE ─────────────────────────────────────────────────────────────── */
+.timeline { position: relative; padding-left: 32px; }
+.timeline::before {
+content: ‘’; position: absolute; left: 6px; top: 8px; bottom: 0;
+width: 1px; background: linear-gradient(to bottom, var(–sky), var(–line));
+}
+.tl-item { position: relative; padding-bottom: 48px; }
+.tl-item:last-child { padding-bottom: 0; }
+.tl-dot {
+position: absolute; left: -29px; top: 6px;
+width: 11px; height: 11px; border-radius: 50%;
+background: var(–white); border: 2px solid var(–sky);
+box-shadow: 0 0 0 3px rgba(74,127,193,.15);
+}
+.tl-date {
+font-size: 11px; font-weight: 600; letter-spacing: 0.04em;
+text-transform: uppercase; color: var(–sky); margin-bottom: 6px;
+}
+.tl-title {
+font-size: 17px; font-weight: 600; color: var(–ink);
+letter-spacing: -0.02em; margin-bottom: 3px; line-height: 1.3;
+}
+.tl-sub {
+font-size: 12px; font-weight: 400; color: var(–muted); margin-bottom: 10px;
+}
+.tl-body {
+font-size: 14px; font-weight: 300; color: var(–body); line-height: 1.8;
+}
+.tl-chips { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 12px; }
+.tl-chip {
+font-size: 11px; font-weight: 500; color: var(–sky);
+background: rgba(74,127,193,0.08);
+border-radius: 6px; padding: 3px 10px;
+letter-spacing: 0.01em;
+}
+/* Dark section tl */
+.section-dark .tl-title { color: #fff; }
+.section-dark .tl-sub { color: rgba(255,255,255,.4); }
+.section-dark .tl-body { color: rgba(255,255,255,.55); }
+.section-dark .timeline::before { background: linear-gradient(to bottom, var(–sky), rgba(74,127,193,.1)); }
+.section-dark .tl-dot { background: var(–dark-bg); border-color: var(–sky); }
+
+/* ── CERT GRID ────────────────────────────────────────────────────────────── */
+.cert-grid {
+display: grid;
+grid-template-columns: repeat(3, 1fr);
+gap: 1px; background: var(–line);
+border: 1px solid var(–line); border-radius: 16px; overflow: hidden;
+}
+@media(max-width:860px) { .cert-grid { grid-template-columns: 1fr 1fr; } }
+@media(max-width:540px) { .cert-grid { grid-template-columns: 1fr; } }
+
+.cert-card {
+background: var(–white); padding: 24px 22px;
+transition: background .2s;
+display: flex; flex-direction: column; gap: 4px;
+}
+.cert-card:hover { background: var(–bg); }
+.cert-ico { margin-bottom: 10px; }
+.cert-ico svg { stroke: var(–sky); }
+.cert-name { font-size: 13px; font-weight: 600; color: var(–ink); line-height: 1.4; letter-spacing: -0.01em; }
+.cert-org { font-size: 11px; font-weight: 400; color: var(–sky); margin-top: 2px; }
+.cert-when { font-size: 11px; color: var(–muted); margin-top: 4px; }
+
+/* ── SKILLS ──────────────────────────────────────────────────────────────── */
+.skills-grid {
+display: grid; grid-template-columns: repeat(3,1fr); gap: 16px;
+}
+@media(max-width:860px) { .skills-grid { grid-template-columns: 1fr 1fr; } }
+@media(max-width:480px) { .skills-grid { grid-template-columns: 1fr; } }
+
+.skill-card {
+background: var(–white);
+border: 1px solid var(–line);
+border-radius: 16px; padding: 24px 22px;
+transition: box-shadow .25s, transform .25s;
+}
+.skill-card:hover { box-shadow: 0 8px 32px rgba(26,53,96,.10); transform: translateY(-2px); }
+.sk-ico {
+width: 40px; height: 40px; border-radius: 10px;
+background: rgba(74,127,193,.08);
+display: flex; align-items: center; justify-content: center; margin-bottom: 14px;
+}
+.sk-ico svg { stroke: var(–sky); }
+.sk-title { font-size: 14px; font-weight: 600; color: var(–ink); letter-spacing: -0.01em; margin-bottom: 10px; }
+.sk-tags { display: flex; flex-wrap: wrap; gap: 5px; }
+.sk-tag { font-size: 11px; font-weight: 400; color: var(–body); background: var(–bg); border-radius: 6px; padding: 3px 9px; }
+
+/* ── VOLUNTEER ───────────────────────────────────────────────────────────── */
+.vol-card {
+background: rgba(255,255,255,.04);
+border: 1px solid rgba(255,255,255,.08);
+border-radius: 20px; padding: 40px;
+display: grid; grid-template-columns: 56px 1fr; gap: 28px; align-items: start;
+}
+@media(max-width:640px) { .vol-card { grid-template-columns: 1fr; } .vol-ico { display: none; } }
+.vol-ico {
+width: 56px; height: 56px; border-radius: 14px;
+background: rgba(74,127,193,.12);
+display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+}
+.vol-ico svg { stroke: var(–sky-lt); }
+.vol-title { font-size: 20px; font-weight: 700; color: #fff; letter-spacing: -0.02em; margin-bottom: 4px; }
+.vol-sub { font-size: 12px; font-weight: 500; color: var(–sky-lt); letter-spacing: 0.04em; text-transform: uppercase; margin-bottom: 20px; }
+.vol-list { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+.vol-list li {
+font-size: 14px; font-weight: 300; color: rgba(255,255,255,.55); line-height: 1.7;
+padding-left: 18px; position: relative;
+}
+.vol-list li::before { content: ‘’; position: absolute; left: 0; top: 10px; width: 5px; height: 1px; background: var(–sky); }
+
+/* ── LANG BARS (inside stats) ─────────────────────────────────────────────── */
+.lang-section { margin-top: 40px; }
+.lang-section-title { font-size: 11px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: rgba(255,255,255,.3); margin-bottom: 20px; }
+.lang-row { display: flex; flex-direction: column; gap: 13px; }
+.lang-item { display: flex; align-items: center; gap: 12px; min-width: 0; }
+.lang-name { font-size: 12px; font-weight: 400; color: rgba(255,255,255,.7); width: 82px; flex-shrink: 0; }
+.lang-track { flex: 1; min-width: 0; height: 3px; background: rgba(255,255,255,.08); border-radius: 3px; position: relative; overflow: hidden; }
+.lang-fill { position: absolute; top: 0; left: 0; height: 100%; border-radius: 3px; background: linear-gradient(90deg, var(–navy), var(–sky)); width: 0; transition: width 1.6s cubic-bezier(.4,0,.2,1); }
+.lang-lvl { font-size: 11px; font-weight: 600; color: var(–sky-lt); width: 24px; text-align: right; flex-shrink: 0; }
+
+/* ── CONTACT ──────────────────────────────────────────────────────────────── */
+.contact-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
+@media(max-width:860px) { .contact-layout { grid-template-columns: 1fr; gap: 48px; } }
+.contact-lede { font-size: 17px; font-weight: 300; color: rgba(255,255,255,.55); line-height: 1.8; margin-bottom: 32px; }
+.contact-cards { display: flex; flex-direction: column; gap: 10px; }
+.c-card {
+display: flex; align-items: center; gap: 14px;
+padding: 16px 20px;
+background: rgba(255,255,255,.04);
+border: 1px solid rgba(255,255,255,.08);
+border-radius: 14px;
+text-decoration: none;
+transition: background .2s, border-color .2s, transform .2s;
+}
+.c-card:hover { background: rgba(255,255,255,.08); border-color: rgba(74,127,193,.35); transform: translateX(4px); }
+.c-ico {
+width: 38px; height: 38px; border-radius: 10px;
+background: rgba(74,127,193,.15);
+display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+}
+.c-ico svg { stroke: var(–sky-lt); }
+.c-k { font-size: 10px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: rgba(255,255,255,.3); }
+.c-v { font-size: 13px; font-weight: 400; color: #fff; margin-top: 1px; }
+
+/* ── FOOTER ───────────────────────────────────────────────────────────────── */
+footer {
+background: var(–dark2); padding: 28px 40px;
+display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px;
+border-top: 1px solid rgba(255,255,255,.05);
+}
+.ft-brand { font-size: 14px; font-weight: 600; color: rgba(255,255,255,.35); letter-spacing: -0.01em; }
+.ft-brand span { color: var(–sky); font-weight: 300; }
+.ft-copy { font-size: 11px; color: rgba(255,255,255,.2); letter-spacing: 0.04em; }
+@media(max-width:560px) { footer { flex-direction: column; padding: 24px 20px; text-align: center; } }
+
+</style>
+</head>
+<body>
+
+<!-- ═══ NAV ═══════════════════════════════════════════════════════════════ -->
+
+<nav>
+  <a href="#" class="nav-brand">WAHB <span>/ Mohamed Amine</span></a>
+  <ul class="nav-links">
+    <li><a href="#about">Über mich</a></li>
+    <li><a href="#erfahrung">Erfahrung</a></li>
+    <li><a href="#bildung">Bildung</a></li>
+    <li><a href="#zertifikate">Zertifikate</a></li>
+    <li><a href="#kompetenzen">Kompetenzen</a></li>
+    <li><a href="#kontakt">Kontakt</a></li>
+  </ul>
+</nav>
+
+<!-- ═══ HERO ══════════════════════════════════════════════════════════════ -->
+
+<section class="hero">
+  <div class="hero-inner">
+    <div class="hero-chip r"><span class="chip-dot"></span>Bewerber · Ausbildung Pflegefachmann</div>
+
+```
+<h1 class="hero-name r">WAHB <span>Mohamed Amine</span></h1>
+
+<p class="hero-role r">BSc Biologie &amp; Humanphysiologie · Pflege &amp; Klinik</p>
+
+<p class="hero-desc r">Motivierter Bewerber aus Casablanca mit klinischer Erfahrung,<br>acht Pflegezertifikaten und Deutschkenntnissen auf B2-Niveau.</p>
+
+<div class="hero-actions r">
+  <a href="https://tinyurl.com/wahbma" target="_blank" class="btn-apple btn-apple-primary">Bewerbungsunterlagen</a>
+  <a href="#kontakt" class="btn-apple btn-apple-ghost">Kontakt aufnehmen</a>
+</div>
+
+<div class="hero-stats r stagger">
+  <div class="hero-stat">
+    <div class="hero-stat-num">5<span>+</span></div>
+    <div class="hero-stat-label">Sprachen</div>
+  </div>
+  <div class="hero-stat">
+    <div class="hero-stat-num">4<span>+</span></div>
+    <div class="hero-stat-label">Klinische Praktika</div>
+  </div>
+  <div class="hero-stat">
+    <div class="hero-stat-num">8<span>+</span></div>
+    <div class="hero-stat-label">Pflegezertifikate</div>
+  </div>
+  <div class="hero-stat">
+    <div class="hero-stat-num">B<span>2</span></div>
+    <div class="hero-stat-label">Deutschniveau</div>
+  </div>
+</div>
+```
+
+  </div>
+</section>
+
+<!-- ═══ ABOUT ═════════════════════════════════════════════════════════════ -->
+
+<section id="about">
+  <div class="section-inner">
+    <div class="eyebrow r">Über mich</div>
+    <h2 class="headline r">Empathie. Wissenschaft.<br><span>Berufung.</span></h2>
+    <div class="about-layout">
+      <div class="about-body r">
+        <p>Mein Name ist <strong>Mohamed Amine Wahb</strong>, ich bin 24 Jahre alt und komme aus Casablanca, Marokko. Mit meinem <strong>Bachelor in Biologie und Humanphysiologie</strong> bringe ich ein tiefes Verständnis des menschlichen Körpers, das ich in Krankenhäusern und Forschungslaboren praktisch angewandt habe.</p>
+        <p>Der Wunsch, in der Pflege zu arbeiten, entstand durch persönliche Erlebnisse: Als ich meine <strong>Großmutter</strong> während ihrer schweren Krankheit begleitete und einem verletzten Freund nach einem Sportunfall half, erkannte ich, wie sehr Empathie und menschliche Präsenz die Genesung beeinflussen können.</p>
+        <p>Ich habe zielgerichtet <strong>acht Pflegezertifikate</strong> erworben, nehme aktiv am B2-Deutschkurs beim Centre Eclipse teil und suche eine <strong>Ausbildung als Pflegefachmann</strong> in Deutschland, um mein Wissen, mein Herz und meine Verantwortung im Gesundheitswesen einzubringen.</p>
+      </div>
+      <div class="info-grid r">
+        <div class="info-row">
+          <div class="info-ico"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12S4 16 4 10a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg></div>
+          <div class="info-meta"><div class="info-k">Standort</div><div class="info-v">Casablanca, Marokko</div></div>
+        </div>
+        <div class="info-row">
+          <div class="info-ico"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-8a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v8"/><path d="M4 16s.5-1 2-1 2.5 2 4 2 2.5-2 4-2 2.5 2 4 2 2-1 2-1"/><path d="M2 21h20"/><path d="M7 8v2"/><path d="M12 8v2"/><path d="M17 8v2"/></svg></div>
+          <div class="info-meta"><div class="info-k">Geburtsdatum</div><div class="info-v">12. Januar 2002</div></div>
+        </div>
+        <div class="info-row">
+          <div class="info-ico"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg></div>
+          <div class="info-meta"><div class="info-k">Abschluss</div><div class="info-v">BSc Biologie &amp; Humanphysiologie</div></div>
+        </div>
+        <div class="info-row">
+          <div class="info-ico"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="16" height="20" x="4" y="2" rx="2"/><path d="M9 22v-4h6v4"/><path d="M8 6h.01"/><path d="M16 6h.01"/><path d="M12 6h.01"/><path d="M12 10h.01"/><path d="M16 10h.01"/><path d="M8 10h.01"/></svg></div>
+          <div class="info-meta"><div class="info-k">Universität</div><div class="info-v">Hassan II — Fakultät Ben M'Sik, Casablanca</div></div>
+        </div>
+        <div class="info-row">
+          <div class="info-ico"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m5 8 6 6"/><path d="m4 14 6-6 2-3"/><path d="M2 5h12"/><path d="M7 2h1"/><path d="m22 22-5-10-5 10"/><path d="M14 18h6"/></svg></div>
+          <div class="info-meta"><div class="info-k">Deutsch</div><div class="info-v">B2-Kurs · Centre Eclipse, seit Sept. 2025</div></div>
+        </div>
+        <div class="info-row">
+          <div class="info-ico"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 17H5a2 2 0 0 1-2-2V9a2 2 0 0 1 2-2h1l2-3h8l2 3h1a2 2 0 0 1 2 2v6a2 2 0 0 1-2 2Z"/><circle cx="7.5" cy="17.5" r="2.5"/><circle cx="16.5" cy="17.5" r="2.5"/></svg></div>
+          <div class="info-meta"><div class="info-k">Führerschein</div><div class="info-v">Klasse B · gültig bis 09.03.2031</div></div>
+        </div>
+        <div class="info-row">
+          <div class="info-ico"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg></div>
+          <div class="info-meta"><div class="info-k">E-Mail</div><div class="info-v"><a id="em-about" href="#">—</a></div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ LANGUAGES (dark strip) ════════════════════════════════════════════ -->
+
+<section class="section-dark" style="padding:64px 40px;">
+  <div class="section-inner">
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center;">
+      <div class="r">
+        <div class="eyebrow">Sprachkenntnisse</div>
+        <h2 class="headline" style="margin-bottom:8px;">5 Sprachen.<br><span>Fließend kommunizieren.</span></h2>
+        <p style="font-size:15px;font-weight:300;color:rgba(255,255,255,.4);line-height:1.7;margin-top:12px;">Von der Muttersprache bis zur Fachkommunikation auf B2-Niveau in Deutsch — bereit für das internationale Pflegeumfeld.</p>
+      </div>
+      <div class="r">
+        <div class="lang-row">
+          <div class="lang-item"><span class="lang-name">Arabisch</span><div class="lang-track"><div class="lang-fill" data-w="100%"></div></div><span class="lang-lvl">C2</span></div>
+          <div class="lang-item"><span class="lang-name">Tamazight</span><div class="lang-track"><div class="lang-fill" data-w="100%"></div></div><span class="lang-lvl">C2</span></div>
+          <div class="lang-item"><span class="lang-name">Englisch</span><div class="lang-track"><div class="lang-fill" data-w="90%"></div></div><span class="lang-lvl">C2</span></div>
+          <div class="lang-item"><span class="lang-name">Deutsch</span><div class="lang-track"><div class="lang-fill" data-w="85%"></div></div><span class="lang-lvl">B2</span></div>
+          <div class="lang-item"><span class="lang-name">Französisch</span><div class="lang-track"><div class="lang-fill" data-w="80%"></div></div><span class="lang-lvl">B1</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ ERFAHRUNG ══════════════════════════════════════════════════════════ -->
+
+<section id="erfahrung" class="section-bg">
+  <div class="section-inner">
+    <div class="eyebrow r">Praktische Erfahrung</div>
+    <h2 class="headline r">Klinik, Labor &amp; <span>Forschung</span></h2>
+    <p class="subhead r">Klinische Praktika, Laborarbeit, Projektmanagement und langjährige Tätigkeit als Schiedsrichterassistent.</p>
+    <div class="timeline r">
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <div class="tl-date">Sep – Dez 2023</div>
+        <div class="tl-title">Praktikant — Medizintechnisches Labor</div>
+        <div class="tl-sub">Hôpital Privé International Casablanca · CIM Santé Gruppe</div>
+        <p class="tl-body">Durchführung von Blutanalysen (kleines Blutbild, Gerinnungstests), selbstständige serologische Tests und Mitarbeit bei bakteriologischen Verfahren. Probenvorbereitung und Bedienung von Laborgeräten.</p>
+        <div class="tl-chips"><span class="tl-chip">Blutanalyse</span><span class="tl-chip">Serologie</span><span class="tl-chip">Biochemie</span><span class="tl-chip">Bakteriologie</span><span class="tl-chip">Präanalytik</span></div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <div class="tl-date">09.–10. Okt. 2023</div>
+        <div class="tl-title">African BioGenome Project — Workshop</div>
+        <div class="tl-sub">Universität Mohammed V de Rabat · Regional Workshop Nordafrika</div>
+        <p class="tl-body">Workshop zur Biodiversitätsgenomik in Nord-Afrika. Grundlagen in Genomik, Bioinformatik und Molekularbiologie vertieft. Zertifikat durch Prof. Anne Muigai (AfricaBP) und Prof. Mohamed Regragui (Dekan UM5R).</p>
+        <div class="tl-chips"><span class="tl-chip">Genomik</span><span class="tl-chip">Bioinformatik</span><span class="tl-chip">Molekularbiologie</span></div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <div class="tl-date">Mrz – Jun 2023</div>
+        <div class="tl-title">Praktikant Forschung &amp; Mikrobiologie</div>
+        <div class="tl-sub">Labor für Ökologie und Umwelt · Fakultät Ben M'Sik, Casablanca</div>
+        <p class="tl-body">Abschlusspraktikum in der Mikrobiologie-Einheit. Praxis in mikrobiologischen Kulturtechniken sowie Überwachung von Kulturparametern mittels halbautomatischem Mini-Bioreaktorsystem.</p>
+        <div class="tl-chips"><span class="tl-chip">Kulturtechniken</span><span class="tl-chip">Mikrobielle Stämme</span><span class="tl-chip">Bioreaktorsystem</span><span class="tl-chip">pH-Überwachung</span></div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <div class="tl-date">Jan – Jun 2023</div>
+        <div class="tl-title">Eigenständiges Forschungsprojekt</div>
+        <div class="tl-sub">Modul Mikrobiologie · Abteilung Biologie, Fakultät Ben M'Sik</div>
+        <p class="tl-body">Untersuchung des Einflusses von Glukosekonzentrationen auf pH-Wert und Biomasseentwicklung von <em>Saccharomyces cerevisiae</em>. Wissenschaftlicher Bericht verfasst.</p>
+        <div class="tl-chips"><span class="tl-chip">S. cerevisiae</span><span class="tl-chip">pH-Analyse</span><span class="tl-chip">Biomasse</span><span class="tl-chip">Statistik</span></div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <div class="tl-date">Jul – Aug 2022</div>
+        <div class="tl-title">Medizintechnisches Praktikum</div>
+        <div class="tl-sub">Krankenhauszentrum der Bezirke Moulay Rachid, Casablanca</div>
+        <p class="tl-body">Probenvorbereitung, -annahme und -dokumentation (Präanalytik). Analysemethoden in klinischer Biochemie und Hämatologie. Einhaltung von QM-Richtlinien und Hygienestandards.</p>
+        <div class="tl-chips"><span class="tl-chip">Hämatologie</span><span class="tl-chip">Biochemie</span><span class="tl-chip">Präanalytik</span><span class="tl-chip">QM</span><span class="tl-chip">Hygiene</span></div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <div class="tl-date">Jul 2023 · 1 Monat</div>
+        <div class="tl-title">Laborassistent — Biochemie &amp; Analytik</div>
+        <div class="tl-sub">Einheit für Biochemie, Ökologie und Umwelt · Fakultät Ben M'Sik, Casablanca</div>
+        <p class="tl-body">Beobachtungspraktikum in der biochemischen Laboreinheit. Einführung in chemische Analysetechniken und Extraktion ätherischer Öle: HPLC, Molekularelektrophorese, Massenspektrometrie, Durchflusszytometrie (CMF) sowie Ultraschall-, Mazeration- und Filtrationsextraktion.</p>
+        <div class="tl-chips"><span class="tl-chip">HPLC</span><span class="tl-chip">Elektrophorese</span><span class="tl-chip">Massenspektrometrie</span><span class="tl-chip">Durchflusszytometrie</span><span class="tl-chip">Extraktion</span></div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <div class="tl-date">Feb – Apr 2023 · 3 Monate</div>
+        <div class="tl-title">Projektmanager — Lebensmittelstartup</div>
+        <div class="tl-sub">P'outCakes · Selbstständig · Remote, Casablanca</div>
+        <p class="tl-body">Eigenverantwortliche Leitung eines Startup-Projekts im Lebensmittelbereich (proteinreiche Crêpe-Fertigprodukte). Projektplanung mit Microsoft Project, Einsatz agiler Methoden, Koordination von Produkt­entwicklung und Markteinführungsstrategie.</p>
+        <div class="tl-chips"><span class="tl-chip">Projektmanagement</span><span class="tl-chip">Agile</span><span class="tl-chip">Microsoft Project</span><span class="tl-chip">Produktentwicklung</span></div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <div class="tl-date">seit 2019 · Teilzeit</div>
+        <div class="tl-title">Schiedsrichterassistent — Regionaler Fußball</div>
+        <div class="tl-sub">Ligue de Grand Casablanca · LNFP (Nationale Profifußballliga), Marokko</div>
+        <p class="tl-body">Tätigkeit als regionaler Schiedsrichterassistent bei der nationalen Profifußballliga. Regelkonforme Spielleitung, Entscheidungsfindung unter Druck, Kommunikation und Teamkoordination im Wettkampfumfeld.</p>
+        <div class="tl-chips"><span class="tl-chip">Regelkompetenz</span><span class="tl-chip">Teamarbeit</span><span class="tl-chip">Entscheidungsfähigkeit</span><span class="tl-chip">Stressresistenz</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ BILDUNG ════════════════════════════════════════════════════════════ -->
+
+<section id="bildung" class="section-dark">
+  <div class="section-inner">
+    <div class="eyebrow r">Bildungsweg</div>
+    <h2 class="headline r">Akademische <span>Laufbahn</span></h2>
+    <p class="subhead r">Naturwissenschaftlicher Abschluss, international anerkannt — und aktive Sprachausbildung in Deutschland.</p>
+    <div class="timeline r">
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <div class="tl-date">Sep 2020 – Jun 2023</div>
+        <div class="tl-title">Bachelor of Science — Biologie &amp; Humanphysiologie</div>
+        <div class="tl-sub">Fakultät der Wissenschaften Ben M'Sik · Universität Hassan II, Casablanca</div>
+        <p class="tl-body">Abschluss 20.07.2023 (Nr. 2023/202203266). Äquivalent zu einem deutschen Bachelor — anerkannt als H+ Staatliche Hochschule. Übersetzt und beglaubigt durch Redouane Wassif, ermächtigter Übersetzer beim OLG-Düsseldorf. Mitglied bei OREMA Casablanca; Teilnahme an interdisziplinären Workshops und dem Smart-Environment-Projekt der FSBM.</p>
+        <div class="tl-chips"><span class="tl-chip">Zellbiologie</span><span class="tl-chip">Humanphysiologie</span><span class="tl-chip">Biochemie</span><span class="tl-chip">Mikrobiologie</span><span class="tl-chip">Anatomie</span></div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <div class="tl-date">Okt 2020 – Jun 2022</div>
+        <div class="tl-title">DEUG — Biologie Allgemein</div>
+        <div class="tl-sub">Universität Hassan II · Casablanca</div>
+        <p class="tl-body">Zweijähriger Grundstudienabschluss in allgemeiner Biologie. Solide Grundlage in Zellbiologie, Chemie und Naturwissenschaften als Vorbereitung auf den Lizentiatsabschluss.</p>
+        <div class="tl-chips"><span class="tl-chip">Zellbiologie</span><span class="tl-chip">Chemie</span><span class="tl-chip">Naturwissenschaften</span></div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <div class="tl-date">Sep 2019 – Jun 2020</div>
+        <div class="tl-title">Abitur — Experimentelle Wissenschaften</div>
+        <div class="tl-sub">Gymnasium Jaafar El Fassi · Casablanca · Gesamtdurchschnitt 13,69</div>
+        <p class="tl-body">Schulzweig: Physikwissenschaften (Französisch). Stärken: Philosophie 15,0 · Mathematik 14,50 · Englisch 14,25. Übersetzt durch Redouane Wassif, OLG-Düsseldorf. Aktivitäten: Schachclub, Auswahl für Schul-Fußball- und Basketballmannschaft.</p>
+      </div>
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <div class="tl-date">seit Sep 2025</div>
+        <div class="tl-title">Deutschkurs Niveau B2</div>
+        <div class="tl-sub">Centre Eclipse · Casablanca, Marokko</div>
+        <p class="tl-body">Aktiver B2-Teilnehmer seit 15.09.2025. Teilnahmebestätigung ausgestellt 20.10.2025. Ziel: B2-Prüfungsablegung zur Anerkennung in Deutschland.</p>
+        <div class="tl-chips"><span class="tl-chip">B2-Niveau</span><span class="tl-chip">Fachsprache Pflege</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ ZERTIFIKATE ════════════════════════════════════════════════════════ -->
+
+<section id="zertifikate">
+  <div class="section-inner">
+    <div class="eyebrow r">Nachweise &amp; Qualifikationen</div>
+    <h2 class="headline r">Zertifikate &amp; <span>Weiterbildungen</span></h2>
+    <p class="subhead r">Neun nachgewiesene Qualifikationen aus deutschen Pflegeeinrichtungen und internationalen Bildungsprogrammen.</p>
+    <div class="cert-grid stagger r">
+      <div class="cert-card">
+        <div class="cert-ico"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4.8 2.3A.3.3 0 1 0 5 2H4a2 2 0 0 0-2 2v5a6 6 0 0 0 6 6a6 6 0 0 0 6-6V4a2 2 0 0 0-2-2h-1a.2.2 0 1 0 .3.3"/><path d="M8 15v1a6 6 0 0 0 6 6a6 6 0 0 0 6-6v-4"/><circle cx="20" cy="10" r="2"/></svg></div>
+        <div class="cert-name">Vorbereitungskurs für Pflegeberufe</div>
+        <div class="cert-org">German Training Center, Casablanca</div>
+        <div class="cert-when">Jan – Apr 2025 · Abschluss 29.05.2025</div>
+      </div>
+      <div class="cert-card">
+        <div class="cert-ico"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"/><path d="M2 12h20"/></svg></div>
+        <div class="cert-name">Vielfalt Pflegen — eLearning</div>
+        <div class="cert-org">Berufsfachschule Paulo Freire / Zentrum ÜBERLEBEN</div>
+        <div class="cert-when">06.07.2025 · 11 Fortbildungspunkte</div>
+      </div>
+      <div class="cert-card">
+        <div class="cert-ico"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 12h.01"/><path d="M15 12h.01"/><path d="M10 16c.5.3 1.2.5 2 .5s1.5-.2 2-.5"/><path d="M19 6.3a9 9 0 0 1 1.8 3.9 2 2 0 0 1 0 3.6 9 9 0 0 1-17.6 0 2 2 0 0 1 0-3.6A9 9 0 0 1 12 3c2 0 3.5 1.1 3.5 2.5s-.9 2.5-2 2.5c-.8 0-1.5-.4-1.5-1"/></svg></div>
+        <div class="cert-name">Pflegebedürftige Kinder — ADHS &amp; ASS</div>
+        <div class="cert-org">PflegeBetreuer · Gesundheit von Morgen GmbH</div>
+        <div class="cert-when">06.07.2025 · § 45 SGB XI</div>
+      </div>
+      <div class="cert-card">
+        <div class="cert-ico"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg></div>
+        <div class="cert-name">Grundlagen der häuslichen Pflege</div>
+        <div class="cert-org">curendo · Töchter &amp; Söhne GmbH, Berlin</div>
+        <div class="cert-when">06.07.2025 · 6 Stunden · § 45 SGB XI</div>
+      </div>
+      <div class="cert-card">
+        <div class="cert-ico"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="14" x="2" y="7" rx="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg></div>
+        <div class="cert-name">Pflege und Beruf: Organisation &amp; Unterstützung</div>
+        <div class="cert-org">Pflegeschule24.de · Aulis Consult GmbH, Hamburg</div>
+        <div class="cert-when">06.07.2025 · 122 Minuten · § 45 SGB XI</div>
+      </div>
+      <div class="cert-card">
+        <div class="cert-ico"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/></svg></div>
+        <div class="cert-name">Flucht und Trauma — Betreuung Geflüchteter</div>
+        <div class="cert-org">Digitale Akademie · Johanniter-Unfall-Hilfe e.V.</div>
+        <div class="cert-when">12.01.2026 · bildungsportal.johanniter.de</div>
+      </div>
+      <div class="cert-card">
+        <div class="cert-ico"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6 18h8"/><path d="M3 22h18"/><path d="M14 22a7 7 0 1 0 0-14h-1"/><path d="M9 14h2"/><path d="M9 12a2 2 0 0 1-2-2V6h6v4a2 2 0 0 1-2 2Z"/><path d="M12 6V3a1 1 0 0 0-1-1H9a1 1 0 0 0-1 1v3"/></svg></div>
+        <div class="cert-name">Grundkurs Krankenpflege — Basic Level</div>
+        <div class="cert-org">bbw-Gruppe / Bayerische Staatskanzlei · hub4africa.bayern</div>
+        <div class="cert-when">07.07.2025 · Anatomie, Pharmakologie, Pflegerolle</div>
+      </div>
+      <div class="cert-card">
+        <div class="cert-ico"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="6"/><path d="M15.477 12.89 17 22l-5-3-5 3 1.523-9.11"/></svg></div>
+        <div class="cert-name">EF SET English Certificate — C2 Proficient</div>
+        <div class="cert-org">EF Education First · cert.efset.org/YCSNbW</div>
+        <div class="cert-when">22. Feb 2024 · Score 72/100</div>
+      </div>
+      <div class="cert-card">
+        <div class="cert-ico"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M2 15c6.667-6 13.333 0 20-6"/><path d="M9 22c1.798-1.998 2.518-3.995 2.807-5.993"/><path d="M15 2c-1.798 1.998-2.518 3.995-2.807 5.993"/></svg></div>
+        <div class="cert-name">AfricaBP Genomics Workshop</div>
+        <div class="cert-org">African BioGenome Project · Université Mohammed V, Rabat</div>
+        <div class="cert-when">09.–10. Okt. 2023 · Biodiversitätsgenomik</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ EHRENAMT ═══════════════════════════════════════════════════════════ -->
+
+<section class="section-dark">
+  <div class="section-inner">
+    <div class="eyebrow r">Gesellschaftliches Engagement</div>
+    <h2 class="headline r">Ehrenamtliche <span>Tätigkeit</span></h2>
+    <div class="vol-card r">
+      <div class="vol-ico">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/></svg>
+      </div>
+      <div>
+        <div class="vol-title">Fondation Assalam pour le Développement Social</div>
+        <div class="vol-sub">Aktives Mitglied seit Februar 2022 · Casablanca, Marokko</div>
+        <ul class="vol-list">
+          <li>Teilnahme an medizinischen Karawanen zur kostenlosen Gesundheitsversorgung benachteiligter Bevölkerungsgruppen</li>
+          <li>Assistenz bei Blutentnahmen im Rahmen kommunaler Gesundheitsinitiativen — mehrere Standorte, Vereine und Einzelpersonen (2020)</li>
+          <li>Mitwirkung bei medizinischen Einsätzen im Bereich Kindergesundheit: Unterstützung bei der Durchführung von Beschneidungen, Kennenlernen von Methodik und Materialien (2021)</li>
+          <li>Organisation kultureller und sozialer Veranstaltungen, insbesondere zum Tag des Waisen</li>
+          <li>Unterstützung bei Hilfsaktionen für Waisen und Bedürftige — Verteilung von Lebensmitteln und Bildungsaktivitäten</li>
+          <li>Mitwirkung an Programmen zur Gemeinschaftssensibilisierung (Solidarität, Staatsbürgerschaft, soziale Entwicklung)</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ KOMPETENZEN ════════════════════════════════════════════════════════ -->
+
+<section id="kompetenzen" class="section-bg">
+  <div class="section-inner">
+    <div class="eyebrow r">Kompetenzen</div>
+    <h2 class="headline r">Fähigkeiten &amp; <span>Kenntnisse</span></h2>
+    <p class="subhead r">Klinische Praxis, Laborwissenschaft und interkulturelle Kommunikation — vereint in einer Person.</p>
+    <div class="skills-grid stagger r">
+      <div class="skill-card">
+        <div class="sk-ico"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4.8 2.3A.3.3 0 1 0 5 2H4a2 2 0 0 0-2 2v5a6 6 0 0 0 6 6a6 6 0 0 0 6-6V4a2 2 0 0 0-2-2h-1a.2.2 0 1 0 .3.3"/><path d="M8 15v1a6 6 0 0 0 6 6a6 6 0 0 0 6-6v-4"/><circle cx="20" cy="10" r="2"/></svg></div>
+        <div class="sk-title">Pflege &amp; Klinik</div>
+        <div class="sk-tags"><span class="sk-tag">Grundpflege</span><span class="sk-tag">Vitalzeichen</span><span class="sk-tag">Prophylaxen</span><span class="sk-tag">Hygiene</span><span class="sk-tag">Patientenkommunikation</span><span class="sk-tag">Dokumentation</span></div>
+      </div>
+      <div class="skill-card">
+        <div class="sk-ico"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6 18h8"/><path d="M3 22h18"/><path d="M14 22a7 7 0 1 0 0-14h-1"/><path d="M9 14h2"/><path d="M9 12a2 2 0 0 1-2-2V6h6v4a2 2 0 0 1-2 2Z"/><path d="M12 6V3a1 1 0 0 0-1-1H9a1 1 0 0 0-1 1v3"/></svg></div>
+        <div class="sk-title">Labortechniken</div>
+        <div class="sk-tags"><span class="sk-tag">Mikroskopie</span><span class="sk-tag">Zentrifugation</span><span class="sk-tag">Spektrophotometrie</span><span class="sk-tag">Blutanalyse</span><span class="sk-tag">Serologie</span><span class="sk-tag">Kulturtechniken</span></div>
+      </div>
+      <div class="skill-card">
+        <div class="sk-ico"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M2 15c6.667-6 13.333 0 20-6"/><path d="M9 22c1.798-1.998 2.518-3.995 2.807-5.993"/><path d="M15 2c-1.798 1.998-2.518 3.995-2.807 5.993"/></svg></div>
+        <div class="sk-title">Naturwissenschaften</div>
+        <div class="sk-tags"><span class="sk-tag">Humanphysiologie</span><span class="sk-tag">Zellbiologie</span><span class="sk-tag">Biochemie</span><span class="sk-tag">Mikrobiologie</span><span class="sk-tag">Anatomie</span><span class="sk-tag">Pharmakologie</span></div>
+      </div>
+      <div class="skill-card">
+        <div class="sk-ico"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="m5 8 6 6"/><path d="m4 14 6-6 2-3"/><path d="M2 5h12"/><path d="M7 2h1"/><path d="m22 22-5-10-5 10"/><path d="M14 18h6"/></svg></div>
+        <div class="sk-title">Sprachen</div>
+        <div class="sk-tags"><span class="sk-tag">Arabisch — C2</span><span class="sk-tag">Tamazight — C2</span><span class="sk-tag">Englisch — C2</span><span class="sk-tag">Deutsch — B2</span><span class="sk-tag">Französisch — B1</span></div>
+      </div>
+      <div class="skill-card">
+        <div class="sk-ico"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="14" x="2" y="3" rx="2"/><path d="M8 21h8"/><path d="M12 17v4"/></svg></div>
+        <div class="sk-title">Digital &amp; Analyse</div>
+        <div class="sk-tags"><span class="sk-tag">LIMS/LIS</span><span class="sk-tag">MS Office</span><span class="sk-tag">SPSS</span><span class="sk-tag">R</span><span class="sk-tag">Photoshop</span><span class="sk-tag">Premiere Pro</span></div>
+      </div>
+      <div class="skill-card">
+        <div class="sk-ico"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></div>
+        <div class="sk-title">Soft Skills</div>
+        <div class="sk-tags"><span class="sk-tag">Empathie</span><span class="sk-tag">Teamarbeit</span><span class="sk-tag">Schichtbereitschaft</span><span class="sk-tag">Lernbereitschaft</span><span class="sk-tag">Belastbarkeit</span><span class="sk-tag">Eigeninitiative</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ KONTAKT ════════════════════════════════════════════════════════════ -->
+
+<section id="kontakt" class="section-dark">
+  <div class="section-inner">
+    <div class="eyebrow r">Kontakt</div>
+    <h2 class="headline r">Bereit für ein <span>Gespräch?</span></h2>
+    <div class="contact-layout">
+      <div class="r">
+        <p class="contact-lede">Ich freue mich über jede Möglichkeit, mich persönlich vorzustellen. Flexibel bezüglich Arbeitsort und Schichtarbeit — jederzeit verfügbar für ein Vorstellungsgespräch.</p>
+        <p class="contact-lede" style="margin-top:-16px;">Meine vollständigen Bewerbungsunterlagen — Anschreiben, Lebenslauf, Zeugnisse und Zertifikate — finden Sie unter dem untenstehenden Link.</p>
+        <a href="https://tinyurl.com/wahbma" target="_blank" class="btn-apple btn-apple-primary" style="margin-top:8px;">Alle Unterlagen öffnen</a>
+      </div>
+      <div class="contact-cards r">
+        <a id="em-card" href="#" class="c-card">
+          <div class="c-ico"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg></div>
+          <div><div class="c-k">E-Mail</div><div class="c-v" id="em-val">—</div></div>
+        </a>
+        <a href="tel:+212623373022" class="c-card">
+          <div class="c-ico"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.62 3.44 2 2 0 0 1 3.58 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 9.91a16 16 0 0 0 6.08 6.08l1.08-1.08a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg></div>
+          <div><div class="c-k">Telefon</div><div class="c-v">+212 623 373022</div></div>
+        </a>
+        <a href="https://www.linkedin.com/in/whbexc" target="_blank" class="c-card">
+          <div class="c-ico"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect width="4" height="12" x="2" y="9"/><circle cx="4" cy="4" r="2"/></svg></div>
+          <div><div class="c-k">LinkedIn</div><div class="c-v">linkedin.com/in/whbexc</div></div>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ FOOTER ═════════════════════════════════════════════════════════════ -->
+
+<footer>
+  <div class="ft-brand">WAHB <span>/ Mohamed Amine</span></div>
+  <div class="ft-copy">Bewerbung · Ausbildung Pflegefachmann · Casablanca, 2025</div>
+</footer>
+
+<script>
+(function(){
+  /* language bars */
+  setTimeout(function(){
+    var fills = document.querySelectorAll('.lang-fill');
+    for(var i=0;i<fills.length;i++) fills[i].style.width = fills[i].getAttribute('data-w');
+  }, 400);
+
+  /* email */
+  var addr = 'mohamedaminewahb@gmail.com';
+  var a1 = document.getElementById('em-about');
+  if(a1){ a1.textContent=addr; a1.href='mailto:'+addr; }
+  var ec = document.getElementById('em-card');
+  if(ec){ ec.href='mailto:'+addr; }
+  var ev = document.getElementById('em-val');
+  if(ev){ ev.textContent=addr; }
+})();
+</script>
+
+</body>
+</html>
