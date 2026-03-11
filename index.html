@@ -133,7 +133,108 @@ font-size: 12px; font-weight: 400; color: var(–body);
 transition: color .2s; letter-spacing: -0.01em;
 }
 .nav-links a:hover { color: var(–sky); }
-@media(max-width:768px) { .nav-links { display: none; } nav { padding: 0 20px; } }
+@media(max-width:768px) {
+nav { padding: 0 20px; }
+.nav-links { display: none; }
+}
+
+/* ══════════════════════════════════════════════════════
+MOBILE — comprehensive phone-friendly pass
+══════════════════════════════════════════════════════ */
+@media(max-width:600px) {
+
+/* Nav */
+nav { height: 48px; padding: 0 16px; }
+.nav-brand { font-size: 13px; }
+.theme-toggle { width: 32px; height: 32px; }
+
+/* Hero */
+.hero { padding: 96px 20px 72px; text-align: left; align-items: flex-start; }
+.hero-inner { width: 100%; }
+.hero-chip { font-size: 10px; padding: 5px 12px; margin-bottom: 24px; }
+.hero-name { font-size: clamp(28px, 9vw, 44px); white-space: normal; line-height: 1.0; }
+.hero-role { font-size: 16px; }
+.hero-desc { font-size: 14px; text-align: left; margin-bottom: 32px; }
+.hero-actions { justify-content: flex-start; }
+.btn-apple { padding: 12px 22px; font-size: 13px; }
+
+/* Stats strip — 2×2 grid */
+.hero-stats {
+display: grid;
+grid-template-columns: 1fr 1fr;
+gap: 0;
+margin-top: 48px;
+padding-top: 32px;
+border-top: 1px solid rgba(255,255,255,0.07);
+}
+.hero-stat {
+padding: 20px 0;
+border-right: none;
+border-bottom: 1px solid rgba(255,255,255,0.07);
+text-align: left;
+padding-left: 0;
+}
+.hero-stat:nth-child(odd) { padding-right: 16px; border-right: 1px solid rgba(255,255,255,0.07); }
+.hero-stat:nth-child(3),
+.hero-stat:nth-child(4) { border-bottom: none; }
+.hero-stat-num { font-size: 28px; }
+
+/* Sections */
+section { padding: 56px 20px; }
+.subhead { font-size: 15px; margin-bottom: 40px; }
+.headline { font-size: clamp(24px, 7vw, 36px); }
+
+/* About */
+.about-layout { gap: 36px; }
+.about-body p { font-size: 14px; }
+.info-row { padding: 11px 0; gap: 10px; }
+.info-ico { width: 24px; height: 24px; border-radius: 6px; }
+.info-k { font-size: 9px; }
+.info-v { font-size: 12px; }
+
+/* Timeline */
+.timeline { padding-left: 22px; }
+.tl-dot { left: -19px; width: 9px; height: 9px; }
+.tl-item { padding-bottom: 36px; }
+.tl-title { font-size: 15px; }
+.tl-body { font-size: 13px; }
+.tl-chips { gap: 4px; }
+.tl-chip { font-size: 10px; padding: 2px 8px; }
+
+/* Cert grid — single column on phones */
+.cert-grid { grid-template-columns: 1fr; border-radius: 12px; }
+.cert-card { padding: 18px 16px; }
+.cert-name { font-size: 13px; }
+
+/* Skills grid — single column */
+.skills-grid { grid-template-columns: 1fr; gap: 12px; }
+.skill-card { padding: 20px 18px; border-radius: 14px; }
+.sk-title { font-size: 13px; }
+
+/* Vol card */
+.vol-card { padding: 24px 20px; border-radius: 16px; }
+.vol-title { font-size: 17px; }
+.vol-list li { font-size: 13px; }
+
+/* Contact */
+.contact-lede { font-size: 15px; }
+.c-card { padding: 13px 16px; gap: 12px; border-radius: 12px; }
+.c-ico { width: 32px; height: 32px; border-radius: 8px; }
+.c-k { font-size: 9px; }
+.c-v { font-size: 12px; }
+
+/* Footer */
+footer { padding: 20px 16px; }
+.ft-brand { font-size: 13px; }
+.ft-copy { font-size: 10px; }
+
+/* Language bars */
+.lang-name { width: 68px; font-size: 11px; }
+.lang-lvl { font-size: 10px; }
+
+/* Eyebrow */
+.eyebrow { font-size: 11px; }
+}
 
 /* ── HERO ───────────────────────────────────────────────────────────────── */
 .hero {
@@ -241,7 +342,7 @@ margin-bottom: 6px;
 .hero-stat-num span { color: var(–sky-lt); font-weight: 300; }
 .hero-stat-label { font-size: 11px; color: rgba(255,255,255,0.35); letter-spacing: 0.06em; text-transform: uppercase; font-weight: 400; }
 @media(max-width:640px) {
-.hero-stats { flex-wrap: wrap; gap: 32px; border-top: none; }
+.hero-stats { flex-wrap: wrap; gap: 0; }
 .hero-stat { border-right: none; padding: 0 20px; }
 }
 
