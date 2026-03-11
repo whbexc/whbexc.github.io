@@ -5,6 +5,14 @@
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <title>WAHB Mohamed Amine — Pflegefachmann</title>
+<!-- Set theme before CSS renders to prevent flash -->
+<script>
+  (function(){
+    var saved = localStorage.getItem('wahb-theme');
+    var sys = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+    document.documentElement.setAttribute('data-theme', saved || sys);
+  })();
+</script>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
 <style>
 /* ── TOKENS ─────────────────────────────────────────────────────────────── */
@@ -63,12 +71,6 @@
 /* dark mode: body bg handled via CSS vars on :root */
 body { transition: background .3s, color .3s; }
 
-/* dark mode: nav glass */
-:root[data-theme=“dark”] nav { background: rgba(10,22,40,0.88); border-bottom-color: rgba(255,255,255,0.06); }
-@media (prefers-color-scheme: dark) {
-:root:not([data-theme=“light”]) nav { background: rgba(10,22,40,0.88); border-bottom-color: rgba(255,255,255,0.06); }
-}
-
 /* dark mode: section-bg */
 :root[data-theme=“dark”] .section-bg { background: var(–bg); }
 
@@ -84,23 +86,22 @@ body { transition: background .3s, color .3s; }
 
 /* toggle button */
 .theme-toggle {
-width: 36px; height: 36px; border-radius: 50%;
+width: 34px; height: 34px; border-radius: 50%;
 border: 1px solid var(–line);
 background: var(–bg);
 cursor: pointer; display: flex; align-items: center; justify-content: center;
 transition: background .2s, border-color .2s;
-flex-shrink: 0;
+flex-shrink: 0; padding: 0; outline: none;
+-webkit-appearance: none;
 }
+:root[data-theme=“dark”] .theme-toggle { background: rgba(255,255,255,0.07); border-color: rgba(255,255,255,0.12); }
 .theme-toggle:hover { background: var(–line); }
-.theme-toggle svg { stroke: var(–sky); width: 16px; height: 16px; }
+:root[data-theme=“dark”] .theme-toggle:hover { background: rgba(255,255,255,0.12); }
+.theme-toggle svg { stroke: var(–sky); width: 16px; height: 16px; flex-shrink:0; }
 .icon-sun { display: none; }
 .icon-moon { display: block; }
 [data-theme=“dark”] .icon-sun { display: block; }
 [data-theme=“dark”] .icon-moon { display: none; }
-@media (prefers-color-scheme: dark) {
-:root:not([data-theme=“light”]) .icon-sun { display: block; }
-:root:not([data-theme=“light”]) .icon-moon { display: none; }
-}
 
 /* ── RESET ──────────────────────────────────────────────────────────────── */
 *,*::before,*::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -110,17 +111,21 @@ a { color: inherit; text-decoration: none; }
 img { display: block; max-width: 100%; }
 ::-webkit-scrollbar { width: 0px; }
 
-/* ── NAV ────────────────────────────────────────────────────────────────── */
+/* Nav background — adapts to theme */
 nav {
 position: fixed; top: 0; left: 0; right: 0; z-index: 999;
 height: 52px;
 display: flex; align-items: center; justify-content: space-between;
 padding: 0 40px;
-background: rgba(255,255,255,0.82);
+background: rgba(255,255,255,0.85);
 backdrop-filter: saturate(180%) blur(20px);
 -webkit-backdrop-filter: saturate(180%) blur(20px);
 border-bottom: 1px solid rgba(0,0,0,0.06);
-transition: background .3s;
+transition: background .3s, border-color .3s, box-shadow .3s;
+}
+:root[data-theme=“dark”] nav {
+background: rgba(8,18,36,0.88);
+border-bottom-color: rgba(255,255,255,0.07);
 }
 .nav-brand {
 font-size: 15px; font-weight: 600; color: var(–ink);
