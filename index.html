@@ -566,21 +566,21 @@ border-top: 1px solid rgba(255,255,255,.05);
 @media(max-width:560px) { footer { flex-direction: column; padding: 24px 20px; text-align: center; } }
 
 /* ── REVEAL ───────────────────────────────────────────────────────────────── */
-.r { transition: opacity .65s ease, transform .65s ease; }
-.js-on .r { opacity: 0; transform: translateY(20px); }
-.js-on .r.in { opacity: 1; transform: none; }
-.js-on .r.in-slow { opacity: 1; transform: none; transition-duration: .9s; }
+.r { opacity: 1; transform: none; }
+.r.animate { transition: opacity .65s ease, transform .65s ease; }
+.js-on .r.animate { opacity: 0; transform: translateY(20px); }
+.js-on .r.animate.in { opacity: 1; transform: none; }
 
-/* stagger children */
-.stagger > * { transition: opacity .5s ease, transform .5s ease; }
-.js-on .stagger > * { opacity: 0; transform: translateY(16px); }
-.js-on .stagger.in > *:nth-child(1) { opacity:1; transform:none; transition-delay:.05s; }
-.js-on .stagger.in > *:nth-child(2) { opacity:1; transform:none; transition-delay:.12s; }
-.js-on .stagger.in > *:nth-child(3) { opacity:1; transform:none; transition-delay:.19s; }
-.js-on .stagger.in > *:nth-child(4) { opacity:1; transform:none; transition-delay:.26s; }
-.js-on .stagger.in > *:nth-child(5) { opacity:1; transform:none; transition-delay:.33s; }
-.js-on .stagger.in > *:nth-child(6) { opacity:1; transform:none; transition-delay:.40s; }
-.js-on .stagger.in > *:nth-child(n+7) { opacity:1; transform:none; transition-delay:.46s; }
+.stagger > * { opacity: 1; transform: none; }
+.stagger.animate > * { transition: opacity .5s ease, transform .5s ease; }
+.js-on .stagger.animate > * { opacity: 0; transform: translateY(16px); }
+.js-on .stagger.animate.in > *:nth-child(1) { opacity:1; transform:none; transition-delay:.05s; }
+.js-on .stagger.animate.in > *:nth-child(2) { opacity:1; transform:none; transition-delay:.12s; }
+.js-on .stagger.animate.in > *:nth-child(3) { opacity:1; transform:none; transition-delay:.19s; }
+.js-on .stagger.animate.in > *:nth-child(4) { opacity:1; transform:none; transition-delay:.26s; }
+.js-on .stagger.animate.in > *:nth-child(5) { opacity:1; transform:none; transition-delay:.33s; }
+.js-on .stagger.animate.in > *:nth-child(6) { opacity:1; transform:none; transition-delay:.40s; }
+.js-on .stagger.animate.in > *:nth-child(n+7) { opacity:1; transform:none; transition-delay:.46s; }
 </style>
 
 </head>
@@ -1040,35 +1040,11 @@ border-top: 1px solid rgba(255,255,255,.05);
     }
   });
 
-  /* scroll reveal — IntersectionObserver (mobile-safe) */
+  /* reveal — mark all visible immediately, no hiding */
   var items = document.querySelectorAll('.r');
   var staggerItems = document.querySelectorAll('.stagger');
-
-  function revealAll() {
-    for(var i=0;i<items.length;i++) items[i].classList.add('in');
-    for(var i=0;i<staggerItems.length;i++) staggerItems[i].classList.add('in');
-  }
-
-  if('IntersectionObserver' in window) {
-    var io = new IntersectionObserver(function(entries){
-      entries.forEach(function(e){
-        if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); }
-      });
-    }, { threshold: 0.05, rootMargin: '0px 0px -40px 0px' });
-    for(var i=0;i<items.length;i++) io.observe(items[i]);
-
-    var io2 = new IntersectionObserver(function(entries){
-      entries.forEach(function(e){
-        if(e.isIntersecting){ e.target.classList.add('in'); io2.unobserve(e.target); }
-      });
-    }, { threshold: 0.05 });
-    for(var i=0;i<staggerItems.length;i++) io2.observe(staggerItems[i]);
-  } else {
-    // fallback: reveal everything immediately
-    revealAll();
-  }
-  // hard safety fallback — reveal all after 1.5s no matter what
-  setTimeout(revealAll, 1500);
+  for(var i=0;i<items.length;i++) items[i].classList.add('in');
+  for(var i=0;i<staggerItems.length;i++) staggerItems[i].classList.add('in');
 
   /* language bars — animate when scrolled into view */
   var fills = document.querySelectorAll('.lang-fill');
