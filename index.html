@@ -6,12 +6,6 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <title>WAHB Mohamed Amine — Pflegefachmann</title>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
-<script>
-(function(){
-  var s = localStorage.getItem('wahb-theme');
-  if(s) document.documentElement.setAttribute('data-theme', s);
-})();
-</script>
 <style>
 /* ── TOKENS ─────────────────────────────────────────────────────────────── */
 :root {
@@ -31,76 +25,6 @@
   --dark-bg:#0A1628;
   --dark2:  #0F1E35;
 }
-
-/* ── DARK MODE ───────────────────────────────────────────────────────────── */
-@media (prefers-color-scheme: dark) {
-:root:not([data-theme=“light”]) {
-–ink:   #E8EFF8; –body: #A8BECC; –muted: #6A849A; –subtle: #3A5270;
-–line:  #1E3050; –bg:   #0D1C2E; –white: #0A1628; –card:  #0F1E35;
-}
-}
-:root[data-theme=“dark”] {
-–ink:   #E8EFF8; –body: #A8BECC; –muted: #6A849A; –subtle: #3A5270;
-–line:  #1E3050; –bg:   #0D1C2E; –white: #0A1628; –card:  #0F1E35;
-}
-:root[data-theme=“light”] {
-–ink:#1C2E4A; –body:#3A4F66; –muted:#7A90A8; –subtle:#B8CADB;
-–line:#E2EAF2; –bg:#F5F7FA; –white:#FFFFFF; –card:#FFFFFF;
-}
-
-/* dark: nav */
-@media (prefers-color-scheme: dark) {
-:root:not([data-theme=“light”]) nav { background: rgba(8,18,36,0.88); border-bottom-color: rgba(255,255,255,0.07); }
-}
-:root[data-theme=“dark”] nav { background: rgba(8,18,36,0.88); border-bottom-color: rgba(255,255,255,0.07); }
-
-/* dark: body bg */
-body { transition: background .3s, color .3s; }
-
-/* dark: cards */
-@media (prefers-color-scheme: dark) {
-:root:not([data-theme=“light”]) .cert-card { background: var(–card); }
-:root:not([data-theme=“light”]) .cert-card:hover { background: var(–bg); }
-:root:not([data-theme=“light”]) .skill-card { box-shadow: none; border-color: var(–line); }
-:root:not([data-theme=“light”]) .info-row { border-color: var(–line); }
-:root:not([data-theme=“light”]) .info-ico { background: var(–bg); }
-:root:not([data-theme=“light”]) .sk-tag { background: var(–bg); }
-:root:not([data-theme=“light”]) .cert-grid { background: var(–line); border-color: var(–line); }
-:root:not([data-theme=“light”]) .tl-dot { background: var(–white); }
-}
-:root[data-theme=“dark”] .cert-card { background: var(–card); }
-:root[data-theme=“dark”] .cert-card:hover { background: var(–bg); }
-:root[data-theme=“dark”] .skill-card { box-shadow: none; border-color: var(–line); }
-:root[data-theme=“dark”] .info-row { border-color: var(–line); }
-:root[data-theme=“dark”] .info-ico { background: var(–bg); }
-:root[data-theme=“dark”] .sk-tag { background: var(–bg); }
-:root[data-theme=“dark”] .cert-grid { background: var(–line); border-color: var(–line); }
-:root[data-theme=“dark”] .tl-dot { background: var(–white); }
-
-/* ── TOGGLE BUTTON ───────────────────────────────────────────────────────── */
-.theme-toggle {
-width: 34px; height: 34px; border-radius: 50%;
-border: 1px solid var(–line); background: var(–bg);
-cursor: pointer; display: flex; align-items: center; justify-content: center;
-transition: background .2s, border-color .2s;
-flex-shrink: 0; padding: 0; outline: none;
--webkit-appearance: none; appearance: none;
--webkit-tap-highlight-color: transparent;
-}
-.theme-toggle:hover { opacity: .8; }
-.theme-toggle svg { stroke: var(–sky); width: 16px; height: 16px; display: block; }
-.icon-sun  { display: none; }
-.icon-moon { display: block; }
-@media (prefers-color-scheme: dark) {
-:root:not([data-theme=“light”]) .icon-sun  { display: block; }
-:root:not([data-theme=“light”]) .icon-moon { display: none; }
-:root:not([data-theme=“light”]) .theme-toggle { background: rgba(255,255,255,0.07); border-color: rgba(255,255,255,0.15); }
-}
-:root[data-theme=“dark”] .icon-sun  { display: block; }
-:root[data-theme=“dark”] .icon-moon { display: none; }
-:root[data-theme=“dark”] .theme-toggle { background: rgba(255,255,255,0.07); border-color: rgba(255,255,255,0.15); }
-:root[data-theme=“light”] .icon-sun  { display: none; }
-:root[data-theme=“light”] .icon-moon { display: block; }
 
 /* ── RESET ──────────────────────────────────────────────────────────────── */
 *,*::before,*::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -146,7 +70,6 @@ MOBILE — comprehensive phone-friendly pass
 /* Nav */
 nav { height: 48px; padding: 0 16px; }
 .nav-brand { font-size: 13px; }
-.theme-toggle { width: 30px; height: 30px; }
 
 /* Hero */
 .hero { padding: 96px 20px 72px; text-align: left; align-items: flex-start; }
@@ -575,14 +498,6 @@ border-top: 1px solid rgba(255,255,255,.05);
     <li><a href="#kompetenzen">Kompetenzen</a></li>
     <li><a href="#kontakt">Kontakt</a></li>
   </ul>
-  <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode">
-    <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-      <circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/>
-    </svg>
-    <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-      <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
-    </svg>
-  </button>
 </nav>
 
 <!-- ═══ HERO ══════════════════════════════════════════════════════════════ -->
@@ -987,31 +902,6 @@ border-top: 1px solid rgba(255,255,255,.05);
 
 <script>
 (function(){
-  var root = document.documentElement;
-  var btn  = document.getElementById('themeToggle');
-  var sys  = window.matchMedia('(prefers-color-scheme: dark)');
-
-  function currentIsDark() {
-    var t = root.getAttribute('data-theme');
-    if(t === 'dark')  return true;
-    if(t === 'light') return false;
-    return sys.matches;
-  }
-
-  if(btn) {
-    btn.addEventListener('click', function(){
-      var next = currentIsDark() ? 'light' : 'dark';
-      root.setAttribute('data-theme', next);
-      localStorage.setItem('wahb-theme', next);
-    });
-  }
-
-  sys.addEventListener('change', function(){
-    if(!localStorage.getItem('wahb-theme')) {
-      root.removeAttribute('data-theme');
-    }
-  });
-
   /* language bars */
   setTimeout(function(){
     var fills = document.querySelectorAll('.lang-fill');
