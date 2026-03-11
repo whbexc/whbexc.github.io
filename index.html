@@ -565,24 +565,7 @@ border-top: 1px solid rgba(255,255,255,.05);
 .ft-copy { font-size: 11px; color: rgba(255,255,255,.2); letter-spacing: 0.04em; }
 @media(max-width:560px) { footer { flex-direction: column; padding: 24px 20px; text-align: center; } }
 
-/* ── REVEAL ───────────────────────────────────────────────────────────────── */
-.r { opacity: 1; transform: none; }
-.r.animate { transition: opacity .65s ease, transform .65s ease; }
-.js-on .r.animate { opacity: 0; transform: translateY(20px); }
-.js-on .r.animate.in { opacity: 1; transform: none; }
-
-.stagger > * { opacity: 1; transform: none; }
-.stagger.animate > * { transition: opacity .5s ease, transform .5s ease; }
-.js-on .stagger.animate > * { opacity: 0; transform: translateY(16px); }
-.js-on .stagger.animate.in > *:nth-child(1) { opacity:1; transform:none; transition-delay:.05s; }
-.js-on .stagger.animate.in > *:nth-child(2) { opacity:1; transform:none; transition-delay:.12s; }
-.js-on .stagger.animate.in > *:nth-child(3) { opacity:1; transform:none; transition-delay:.19s; }
-.js-on .stagger.animate.in > *:nth-child(4) { opacity:1; transform:none; transition-delay:.26s; }
-.js-on .stagger.animate.in > *:nth-child(5) { opacity:1; transform:none; transition-delay:.33s; }
-.js-on .stagger.animate.in > *:nth-child(6) { opacity:1; transform:none; transition-delay:.40s; }
-.js-on .stagger.animate.in > *:nth-child(n+7) { opacity:1; transform:none; transition-delay:.46s; }
 </style>
-
 </head>
 <body>
 
@@ -1012,19 +995,12 @@ border-top: 1px solid rgba(255,255,255,.05);
 
 <script>
 (function(){
-  /* body class for reveal */
-  document.body.classList.add('js-on');
-
-  /* ── THEME TOGGLE ────────────────────────────────────────────────────── */
+  /* theme toggle */
   var root = document.documentElement;
-  var btn  = document.getElementById('themeToggle');
-
-  // detect system preference
+  var btn = document.getElementById('themeToggle');
   var prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
   var saved = localStorage.getItem('wahb-theme');
-  var current = saved || (prefersDark ? 'dark' : 'light');
-  root.setAttribute('data-theme', current);
-
+  root.setAttribute('data-theme', saved || (prefersDark ? 'dark' : 'light'));
   if(btn){
     btn.addEventListener('click', function(){
       var next = root.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
@@ -1033,50 +1009,20 @@ border-top: 1px solid rgba(255,255,255,.05);
     });
   }
 
-  // listen for system changes (if no manual override)
-  window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', function(e){
-    if(!localStorage.getItem('wahb-theme')){
-      root.setAttribute('data-theme', e.matches ? 'dark' : 'light');
-    }
-  });
+  /* language bars */
+  setTimeout(function(){
+    var fills = document.querySelectorAll('.lang-fill');
+    for(var i=0;i<fills.length;i++) fills[i].style.width = fills[i].getAttribute('data-w');
+  }, 400);
 
-  /* reveal — mark all visible immediately, no hiding */
-  var items = document.querySelectorAll('.r');
-  var staggerItems = document.querySelectorAll('.stagger');
-  for(var i=0;i<items.length;i++) items[i].classList.add('in');
-  for(var i=0;i<staggerItems.length;i++) staggerItems[i].classList.add('in');
-
-  /* language bars — animate when scrolled into view */
-  var fills = document.querySelectorAll('.lang-fill');
-  if(fills.length) {
-    if('IntersectionObserver' in window) {
-      var langIO = new IntersectionObserver(function(entries){
-        if(entries[0].isIntersecting){
-          for(var i=0;i<fills.length;i++) fills[i].style.width = fills[i].getAttribute('data-w');
-          langIO.disconnect();
-        }
-      }, { threshold: 0.1 });
-      langIO.observe(fills[0].closest('section') || fills[0]);
-    } else {
-      setTimeout(function(){ for(var i=0;i<fills.length;i++) fills[i].style.width = fills[i].getAttribute('data-w'); }, 600);
-    }
-  }
-
-  /* email assembly — scraper safe */
-  var u='mohamedaminewahb', d='gmail', x='com';
-  var addr = u+'@'+d+'.'+x;
+  /* email */
+  var addr = 'mohamedaminewahb@gmail.com';
   var a1 = document.getElementById('em-about');
   if(a1){ a1.textContent=addr; a1.href='mailto:'+addr; }
   var ec = document.getElementById('em-card');
   if(ec){ ec.href='mailto:'+addr; }
   var ev = document.getElementById('em-val');
   if(ev){ ev.textContent=addr; }
-
-  /* nav scroll shadow */
-  var nav = document.querySelector('nav');
-  window.addEventListener('scroll', function(){
-    nav.style.boxShadow = window.scrollY > 10 ? '0 1px 20px rgba(0,0,0,0.08)' : 'none';
-  }, {passive:true});
 })();
 </script>
 
