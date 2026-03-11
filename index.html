@@ -33,17 +33,17 @@ a { color: inherit; text-decoration: none; }
 img { display: block; max-width: 100%; }
 ::-webkit-scrollbar { width: 0px; }
 
-/* ── NAV ────────────────────────────────────────────────────────────────── */
+/* Nav background — adapts to theme */
 nav {
   position: fixed; top: 0; left: 0; right: 0; z-index: 999;
   height: 52px;
   display: flex; align-items: center; justify-content: space-between;
   padding: 0 40px;
-  background: rgba(255,255,255,0.82);
+  background: rgba(255,255,255,0.85);
   backdrop-filter: saturate(180%) blur(20px);
   -webkit-backdrop-filter: saturate(180%) blur(20px);
   border-bottom: 1px solid rgba(0,0,0,0.06);
-  transition: background .3s;
+  transition: background .3s, border-color .3s, box-shadow .3s;
 }
 .nav-brand {
   font-size: 15px; font-weight: 600; color: var(--ink);
@@ -56,7 +56,107 @@ nav {
   transition: color .2s; letter-spacing: -0.01em;
 }
 .nav-links a:hover { color: var(--sky); }
-@media(max-width:768px) { .nav-links { display: none; } nav { padding: 0 20px; } }
+@media(max-width:768px) {
+  nav { padding: 0 20px; }
+  .nav-links { display: none; }
+}
+
+/* ══════════════════════════════════════════════════════
+   MOBILE — comprehensive phone-friendly pass
+   ══════════════════════════════════════════════════════ */
+@media(max-width:600px) {
+
+  /* Nav */
+  nav { height: 48px; padding: 0 16px; }
+  .nav-brand { font-size: 13px; }
+
+  /* Hero */
+  .hero { padding: 96px 20px 72px; text-align: left; align-items: flex-start; }
+  .hero-inner { width: 100%; }
+  .hero-chip { font-size: 10px; padding: 5px 12px; margin-bottom: 24px; }
+  .hero-name { font-size: clamp(28px, 9vw, 44px); white-space: normal; line-height: 1.0; }
+  .hero-role { font-size: 16px; }
+  .hero-desc { font-size: 14px; text-align: left; margin-bottom: 32px; }
+  .hero-actions { justify-content: flex-start; }
+  .btn-apple { padding: 12px 22px; font-size: 13px; }
+
+  /* Stats strip — 2×2 grid */
+  .hero-stats {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0;
+    margin-top: 48px;
+    padding-top: 32px;
+    border-top: 1px solid rgba(255,255,255,0.07);
+  }
+  .hero-stat {
+    padding: 20px 0;
+    border-right: none;
+    border-bottom: 1px solid rgba(255,255,255,0.07);
+    text-align: left;
+    padding-left: 0;
+  }
+  .hero-stat:nth-child(odd) { padding-right: 16px; border-right: 1px solid rgba(255,255,255,0.07); }
+  .hero-stat:nth-child(3),
+  .hero-stat:nth-child(4) { border-bottom: none; }
+  .hero-stat-num { font-size: 28px; }
+
+  /* Sections */
+  section { padding: 56px 20px; }
+  .subhead { font-size: 15px; margin-bottom: 40px; }
+  .headline { font-size: clamp(24px, 7vw, 36px); }
+
+  /* About */
+  .about-layout { gap: 36px; }
+  .about-body p { font-size: 14px; }
+  .info-row { padding: 11px 0; gap: 10px; }
+  .info-ico { width: 24px; height: 24px; border-radius: 6px; }
+  .info-k { font-size: 9px; }
+  .info-v { font-size: 12px; }
+
+  /* Timeline */
+  .timeline { padding-left: 22px; }
+  .tl-dot { left: -19px; width: 9px; height: 9px; }
+  .tl-item { padding-bottom: 36px; }
+  .tl-title { font-size: 15px; }
+  .tl-body { font-size: 13px; }
+  .tl-chips { gap: 4px; }
+  .tl-chip { font-size: 10px; padding: 2px 8px; }
+
+  /* Cert grid — single column on phones */
+  .cert-grid { grid-template-columns: 1fr; border-radius: 12px; }
+  .cert-card { padding: 18px 16px; }
+  .cert-name { font-size: 13px; }
+
+  /* Skills grid — single column */
+  .skills-grid { grid-template-columns: 1fr; gap: 12px; }
+  .skill-card { padding: 20px 18px; border-radius: 14px; }
+  .sk-title { font-size: 13px; }
+
+  /* Vol card */
+  .vol-card { padding: 24px 20px; border-radius: 16px; }
+  .vol-title { font-size: 17px; }
+  .vol-list li { font-size: 13px; }
+
+  /* Contact */
+  .contact-lede { font-size: 15px; }
+  .c-card { padding: 13px 16px; gap: 12px; border-radius: 12px; }
+  .c-ico { width: 32px; height: 32px; border-radius: 8px; }
+  .c-k { font-size: 9px; }
+  .c-v { font-size: 12px; }
+
+  /* Footer */
+  footer { padding: 20px 16px; }
+  .ft-brand { font-size: 13px; }
+  .ft-copy { font-size: 10px; }
+
+  /* Language bars */
+  .lang-name { width: 68px; font-size: 11px; }
+  .lang-lvl { font-size: 10px; }
+
+  /* Eyebrow */
+  .eyebrow { font-size: 11px; }
+}
 
 /* ── HERO ───────────────────────────────────────────────────────────────── */
 .hero {
@@ -105,10 +205,10 @@ nav {
 @keyframes blink { 0%,100%{opacity:1;} 50%{opacity:.3;} }
 
 .hero-name {
-  font-size: clamp(48px, 8vw, 88px);
+  font-size: clamp(32px, 5.5vw, 64px);
   font-weight: 700; color: #FFFFFF;
-  letter-spacing: -0.04em; line-height: 1.0;
-  margin-bottom: 16px;
+  letter-spacing: -0.04em; line-height: 1.05;
+  margin-bottom: 16px; white-space: nowrap;
 }
 .hero-name span { color: var(--sky-lt); font-weight: 300; }
 
@@ -164,7 +264,7 @@ nav {
 .hero-stat-num span { color: var(--sky-lt); font-weight: 300; }
 .hero-stat-label { font-size: 11px; color: rgba(255,255,255,0.35); letter-spacing: 0.06em; text-transform: uppercase; font-weight: 400; }
 @media(max-width:640px) {
-  .hero-stats { flex-wrap: wrap; gap: 32px; border-top: none; }
+  .hero-stats { flex-wrap: wrap; gap: 0; }
   .hero-stat { border-right: none; padding: 0 20px; }
 }
 
@@ -340,9 +440,9 @@ section { padding: 96px 40px; }
 .lang-section { margin-top: 40px; }
 .lang-section-title { font-size: 11px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: rgba(255,255,255,.3); margin-bottom: 20px; }
 .lang-row { display: flex; flex-direction: column; gap: 13px; }
-.lang-item { display: flex; align-items: center; gap: 12px; }
+.lang-item { display: flex; align-items: center; gap: 12px; min-width: 0; }
 .lang-name { font-size: 12px; font-weight: 400; color: rgba(255,255,255,.7); width: 82px; flex-shrink: 0; }
-.lang-track { flex: 1; height: 3px; background: rgba(255,255,255,.08); border-radius: 3px; position: relative; overflow: hidden; }
+.lang-track { flex: 1; min-width: 0; height: 3px; background: rgba(255,255,255,.08); border-radius: 3px; position: relative; overflow: hidden; }
 .lang-fill { position: absolute; top: 0; left: 0; height: 100%; border-radius: 3px; background: linear-gradient(90deg, var(--navy), var(--sky)); width: 0; transition: width 1.6s cubic-bezier(.4,0,.2,1); }
 .lang-lvl { font-size: 11px; font-weight: 600; color: var(--sky-lt); width: 24px; text-align: right; flex-shrink: 0; }
 
@@ -381,22 +481,17 @@ footer {
 .ft-copy { font-size: 11px; color: rgba(255,255,255,.2); letter-spacing: 0.04em; }
 @media(max-width:560px) { footer { flex-direction: column; padding: 24px 20px; text-align: center; } }
 
-/* ── REVEAL ───────────────────────────────────────────────────────────────── */
+/* ── REVEAL ── */
 .r { transition: opacity .65s ease, transform .65s ease; }
-.js-on .r { opacity: 0; transform: translateY(20px); }
+.js-on .r { opacity: 0; transform: translateY(22px); }
 .js-on .r.in { opacity: 1; transform: none; }
-.js-on .r.in-slow { opacity: 1; transform: none; transition-duration: .9s; }
-
-/* stagger children */
-.stagger > * { transition: opacity .5s ease, transform .5s ease; }
-.js-on .stagger > * { opacity: 0; transform: translateY(16px); }
+.js-on .stagger > * { opacity: 0; transform: translateY(16px); transition: opacity .5s ease, transform .5s ease; }
 .js-on .stagger.in > *:nth-child(1) { opacity:1; transform:none; transition-delay:.05s; }
 .js-on .stagger.in > *:nth-child(2) { opacity:1; transform:none; transition-delay:.12s; }
 .js-on .stagger.in > *:nth-child(3) { opacity:1; transform:none; transition-delay:.19s; }
 .js-on .stagger.in > *:nth-child(4) { opacity:1; transform:none; transition-delay:.26s; }
-.js-on .stagger.in > *:nth-child(5) { opacity:1; transform:none; transition-delay:.33s; }
-.js-on .stagger.in > *:nth-child(6) { opacity:1; transform:none; transition-delay:.40s; }
-.js-on .stagger.in > *:nth-child(n+7) { opacity:1; transform:none; transition-delay:.46s; }
+.js-on .stagger.in > *:nth-child(n+5) { opacity:1; transform:none; transition-delay:.33s; }
+
 </style>
 </head>
 <body>
@@ -436,7 +531,7 @@ footer {
         <div class="hero-stat-label">Sprachen</div>
       </div>
       <div class="hero-stat">
-        <div class="hero-stat-num">3<span>×</span></div>
+        <div class="hero-stat-num">4<span>+</span></div>
         <div class="hero-stat-label">Klinische Praktika</div>
       </div>
       <div class="hero-stat">
@@ -523,7 +618,7 @@ footer {
   <div class="section-inner">
     <div class="eyebrow r">Praktische Erfahrung</div>
     <h2 class="headline r">Klinik, Labor &amp; <span>Forschung</span></h2>
-    <p class="subhead r">Drei klinische Praktika in Krankenhäusern und Forschungsinstituten in Casablanca und Rabat.</p>
+    <p class="subhead r">Klinische Praktika, Laborarbeit, Projektmanagement und langjährige Tätigkeit als Schiedsrichterassistent.</p>
     <div class="timeline r">
       <div class="tl-item">
         <div class="tl-dot"></div>
@@ -565,6 +660,30 @@ footer {
         <p class="tl-body">Probenvorbereitung, -annahme und -dokumentation (Präanalytik). Analysemethoden in klinischer Biochemie und Hämatologie. Einhaltung von QM-Richtlinien und Hygienestandards.</p>
         <div class="tl-chips"><span class="tl-chip">Hämatologie</span><span class="tl-chip">Biochemie</span><span class="tl-chip">Präanalytik</span><span class="tl-chip">QM</span><span class="tl-chip">Hygiene</span></div>
       </div>
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <div class="tl-date">Jul 2023 · 1 Monat</div>
+        <div class="tl-title">Laborassistent — Biochemie &amp; Analytik</div>
+        <div class="tl-sub">Einheit für Biochemie, Ökologie und Umwelt · Fakultät Ben M'Sik, Casablanca</div>
+        <p class="tl-body">Beobachtungspraktikum in der biochemischen Laboreinheit. Einführung in chemische Analysetechniken und Extraktion ätherischer Öle: HPLC, Molekularelektrophorese, Massenspektrometrie, Durchflusszytometrie (CMF) sowie Ultraschall-, Mazeration- und Filtrationsextraktion.</p>
+        <div class="tl-chips"><span class="tl-chip">HPLC</span><span class="tl-chip">Elektrophorese</span><span class="tl-chip">Massenspektrometrie</span><span class="tl-chip">Durchflusszytometrie</span><span class="tl-chip">Extraktion</span></div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <div class="tl-date">Feb – Apr 2023 · 3 Monate</div>
+        <div class="tl-title">Projektmanager — Lebensmittelstartup</div>
+        <div class="tl-sub">P'outCakes · Selbstständig · Remote, Casablanca</div>
+        <p class="tl-body">Eigenverantwortliche Leitung eines Startup-Projekts im Lebensmittelbereich: P'outCakes (Breakfast'Out) — proteinreiche Crêpe-Fertigprodukte für den stressigen Alltag, konsumierbar klassisch gekocht oder als Instant-Produkt. Produkt reich an Proteinen, Kohlenhydraten, Lipiden und Vitaminen. Projektplanung mit Microsoft Project, Einsatz agiler Methoden, Koordination von Produktentwicklung und Markteinführungsstrategie.</p>
+        <div class="tl-chips"><span class="tl-chip">Projektmanagement</span><span class="tl-chip">Agile</span><span class="tl-chip">Microsoft Project</span><span class="tl-chip">Produktentwicklung</span><span class="tl-chip">Lebensmittelbranche</span></div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <div class="tl-date">seit 2019 · Teilzeit</div>
+        <div class="tl-title">Schiedsrichterassistent — Regionaler Fußball</div>
+        <div class="tl-sub">Ligue de Grand Casablanca · LNFP (Nationale Profifußballliga), Marokko</div>
+        <p class="tl-body">Tätigkeit als regionaler Schiedsrichterassistent bei der nationalen Profifußballliga. Regelkonforme Spielleitung, Entscheidungsfindung unter Druck, Kommunikation und Teamkoordination im Wettkampfumfeld.</p>
+        <div class="tl-chips"><span class="tl-chip">Regelkompetenz</span><span class="tl-chip">Teamarbeit</span><span class="tl-chip">Entscheidungsfähigkeit</span><span class="tl-chip">Stressresistenz</span></div>
+      </div>
     </div>
   </div>
 </section>
@@ -578,18 +697,26 @@ footer {
     <div class="timeline r">
       <div class="tl-item">
         <div class="tl-dot"></div>
-        <div class="tl-date">Sep 2020 – Jun 2023</div>
+        <div class="tl-date">2019 – Jun 2023</div>
         <div class="tl-title">Bachelor of Science — Biologie &amp; Humanphysiologie</div>
         <div class="tl-sub">Fakultät der Wissenschaften Ben M'Sik · Universität Hassan II, Casablanca</div>
-        <p class="tl-body">Abschluss 20.07.2023 (Nr. 2023/202203266). Äquivalent zu einem deutschen Bachelor — anerkannt als H+ Staatliche Hochschule. Übersetzt und beglaubigt durch Redouane Wassif, ermächtigter Übersetzer beim OLG-Düsseldorf.</p>
+        <p class="tl-body">Abschluss 20.07.2023 (Nr. 2023/202203266). Äquivalent zu einem deutschen Bachelor — anerkannt als H+ Staatliche Hochschule. Übersetzt und beglaubigt durch Redouane Wassif, ermächtigter Übersetzer beim OLG-Düsseldorf. Mitglied bei OREMA Casablanca; Teilnahme an interdisziplinären Workshops und dem Smart-Environment-Projekt der FSBM.</p>
         <div class="tl-chips"><span class="tl-chip">Zellbiologie</span><span class="tl-chip">Humanphysiologie</span><span class="tl-chip">Biochemie</span><span class="tl-chip">Mikrobiologie</span><span class="tl-chip">Anatomie</span></div>
       </div>
       <div class="tl-item">
         <div class="tl-dot"></div>
+        <div class="tl-date">Okt 2020 – Jun 2022</div>
+        <div class="tl-title">DEUG — Biologie Allgemein</div>
+        <div class="tl-sub">Universität Hassan II · Casablanca</div>
+        <p class="tl-body">Zweijähriger Grundstudienabschluss in allgemeiner Biologie. Solide Grundlage in Zellbiologie, Chemie und Naturwissenschaften als Vorbereitung auf den Lizentiatsabschluss.</p>
+        <div class="tl-chips"><span class="tl-chip">Zellbiologie</span><span class="tl-chip">Chemie</span><span class="tl-chip">Naturwissenschaften</span></div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-dot"></div>
         <div class="tl-date">Sep 2019 – Jun 2020</div>
-        <div class="tl-title">Abitur — Experimentelle Wissenschaften</div>
-        <div class="tl-sub">Gymnasium Jaafar El Fassi · Casablanca · Gesamtdurchschnitt 13,69</div>
-        <p class="tl-body">Schulzweig: Physikwissenschaften (Französisch). Stärken: Philosophie 15,0 · Mathematik 14,50 · Englisch 14,25. Übersetzt durch Redouane Wassif, OLG-Düsseldorf.</p>
+        <div class="tl-title">Abitur — Physikwissenschaften (Baccalauréat scientifique)</div>
+        <div class="tl-sub">Gymnasium Jaafar El Fassi El Fihri · Casablanca · Gesamtdurchschnitt 13,69</div>
+        <p class="tl-body">Baccalauréat international option française en sciences physiques. Stärken: Philosophie 15,0 · Mathematik 14,50 · Englisch 14,25. Übersetzt durch Redouane Wassif, OLG-Düsseldorf. Aktivitäten: Schachclub, Auswahl für Schul-Fußball- und Basketballmannschaft, handwerkliche Projekte.</p>
       </div>
       <div class="tl-item">
         <div class="tl-dot"></div>
@@ -682,6 +809,8 @@ footer {
         <div class="vol-sub">Aktives Mitglied seit Februar 2022 · Casablanca, Marokko</div>
         <ul class="vol-list">
           <li>Teilnahme an medizinischen Karawanen zur kostenlosen Gesundheitsversorgung benachteiligter Bevölkerungsgruppen</li>
+          <li>Assistenz bei Blutentnahmen im Rahmen kommunaler Gesundheitsinitiativen — mehrere Standorte, Vereine und Einzelpersonen (2020)</li>
+          <li>Mitwirkung bei medizinischen Einsätzen im Bereich Kindergesundheit: Unterstützung bei der Durchführung von Beschneidungen, Kennenlernen von Methodik und Materialien (2021)</li>
           <li>Organisation kultureller und sozialer Veranstaltungen, insbesondere zum Tag des Waisen</li>
           <li>Unterstützung bei Hilfsaktionen für Waisen und Bedürftige — Verteilung von Lebensmitteln und Bildungsaktivitäten</li>
           <li>Mitwirkung an Programmen zur Gemeinschaftssensibilisierung (Solidarität, Staatsbürgerschaft, soziale Entwicklung)</li>
@@ -769,10 +898,8 @@ footer {
 
 <script>
 (function(){
-  /* body class for reveal */
-  document.body.classList.add('js-on');
-
   /* scroll reveal */
+  document.body.classList.add('js-on');
   var items = document.querySelectorAll('.r');
   function reveal(){
     var vh = window.innerHeight;
@@ -782,30 +909,23 @@ footer {
     }
   }
   reveal();
+  setTimeout(reveal, 100);
+  setTimeout(reveal, 400);
   window.addEventListener('scroll', reveal, {passive:true});
   window.addEventListener('resize', reveal, {passive:true});
-
-  /* language bars — trigger after a short delay */
   setTimeout(function(){
     var fills = document.querySelectorAll('.lang-fill');
     for(var i=0;i<fills.length;i++) fills[i].style.width = fills[i].getAttribute('data-w');
-  }, 600);
+  }, 400);
 
-  /* email assembly — scraper safe */
-  var u='mohamedaminewahb', d='gmail', x='com';
-  var addr = u+'@'+d+'.'+x;
+  /* email */
+  var addr = 'mohamedaminewahb@gmail.com';
   var a1 = document.getElementById('em-about');
   if(a1){ a1.textContent=addr; a1.href='mailto:'+addr; }
   var ec = document.getElementById('em-card');
   if(ec){ ec.href='mailto:'+addr; }
   var ev = document.getElementById('em-val');
   if(ev){ ev.textContent=addr; }
-
-  /* nav scroll shadow */
-  var nav = document.querySelector('nav');
-  window.addEventListener('scroll', function(){
-    nav.style.boxShadow = window.scrollY > 10 ? '0 1px 20px rgba(0,0,0,0.08)' : 'none';
-  }, {passive:true});
 })();
 </script>
 </body>
